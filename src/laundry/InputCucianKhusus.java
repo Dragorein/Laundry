@@ -52,7 +52,7 @@ public class InputCucianKhusus extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel1.setText("Input Cucian (Khusus)");
+        jLabel1.setText("Input Cucian (Satuan)");
 
         jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel2.setText("Nama");
