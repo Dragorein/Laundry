@@ -57,7 +57,7 @@ public class MainMenu extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, 130, 40));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, 70, 40));
 
         jButton7.setText("Laporan Harian");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
