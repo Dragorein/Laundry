@@ -25,6 +25,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         Connect DB = new Connect();
+        DB.config();
         con = DB.con;
         stat = DB.stm;
     }
@@ -114,21 +115,17 @@ public class Login extends javax.swing.JFrame {
 
     private void btloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btloginActionPerformed
         try {
-            sql = "SELECT * FROM admin WHERE username='"+txt_name.getText()+"' AND password='"+txt_pass.getText()+"'";
+            String emp_code = tf_empnum.getText();
+            sql = "SELECT * FROM employee WHERE emp_num='"+emp_code+"'";
             rs = stat.executeQuery(sql);
             if(rs.next()){
-                if(txt_name.getText().equals(rs.getString("username")) && txt_pass.getText().equals(rs.getString("password"))){
-                    JOptionPane.showMessageDialog(null, "berhasil login");
-                }
+                JOptionPane.showMessageDialog(null, rs.getString("emp_name"));
             }else{
-                    JOptionPane.showMessageDialog(null, "username atau password salah");
-                }
+                JOptionPane.showMessageDialog(null, "username atau password salah");
+            }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
-        String emp_code = tf_empnum.getText();
-        char[] emp_pass = pf_pass.getPassword();
-        JOptionPane.showMessageDialog(null, "kode karyawan : "+emp_code+"\npass karyawan : "+emp_pass[0]);
     }//GEN-LAST:event_btloginActionPerformed
 
     /**

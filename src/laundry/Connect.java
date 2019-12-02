@@ -17,7 +17,7 @@ public class Connect {
     public static Connection con;
     public static Statement stm;
     
-    public static void main(String args[]){
+    public void config(){
         try {
             String url = "jdbc:mysql://localhost:3306/laundry";
             String userName = "root";
@@ -26,7 +26,7 @@ public class Connect {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection(url, userName, password);
             stm = con.createStatement();
-            JOptionPane.showMessageDialog(null,"koneksi berhasil");
+//            JOptionPane.showMessageDialog(null,"koneksi berhasil");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"koneksi gagal " +e.getMessage());
         }
