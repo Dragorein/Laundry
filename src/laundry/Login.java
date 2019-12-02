@@ -3,6 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package laundry;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -10,11 +15,18 @@
  */
 public class Login extends javax.swing.JFrame {
 
+    Connection con;
+    Statement stat;
+    ResultSet rs;
+    String sql;
     /**
      * Creates new form Menu
      */
     public Login() {
         initComponents();
+        Connect DB = new Connect();
+        con = DB.con;
+        stat = DB.stm;
     }
 
     /**
@@ -26,8 +38,8 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tfnp = new javax.swing.JTextField();
-        jpnp = new javax.swing.JPasswordField();
+        tf_empnum = new javax.swing.JTextField();
+        pf_pass = new javax.swing.JPasswordField();
         lbnp = new javax.swing.JLabel();
         lbjp = new javax.swing.JLabel();
         btlogin = new javax.swing.JButton();
@@ -36,9 +48,9 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Laundry App v0.0.0");
 
-        tfnp.addActionListener(new java.awt.event.ActionListener() {
+        tf_empnum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfnpActionPerformed(evt);
+                tf_empnumActionPerformed(evt);
             }
         });
 
@@ -68,11 +80,11 @@ public class Login extends javax.swing.JFrame {
                 .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbnp)
-                    .addComponent(tfnp, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_empnum, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbjp)
                     .addComponent(lbtitle, javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(btlogin, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpnp, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pf_pass, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(100, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -83,11 +95,11 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(lbnp)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfnp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tf_empnum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(lbjp)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpnp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pf_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addComponent(btlogin)
                 .addGap(80, 80, 80))
@@ -96,12 +108,27 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfnpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfnpActionPerformed
+    private void tf_empnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_empnumActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfnpActionPerformed
+    }//GEN-LAST:event_tf_empnumActionPerformed
 
     private void btloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btloginActionPerformed
-        // TODO add your handling code here:
+        try {
+            sql = "SELECT * FROM admin WHERE username='"+txt_name.getText()+"' AND password='"+txt_pass.getText()+"'";
+            rs = stat.executeQuery(sql);
+            if(rs.next()){
+                if(txt_name.getText().equals(rs.getString("username")) && txt_pass.getText().equals(rs.getString("password"))){
+                    JOptionPane.showMessageDialog(null, "berhasil login");
+                }
+            }else{
+                    JOptionPane.showMessageDialog(null, "username atau password salah");
+                }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        String emp_code = tf_empnum.getText();
+        char[] emp_pass = pf_pass.getPassword();
+        JOptionPane.showMessageDialog(null, "kode karyawan : "+emp_code+"\npass karyawan : "+emp_pass[0]);
     }//GEN-LAST:event_btloginActionPerformed
 
     /**
@@ -142,10 +169,10 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btlogin;
-    private javax.swing.JPasswordField jpnp;
     private javax.swing.JLabel lbjp;
     private javax.swing.JLabel lbnp;
     private javax.swing.JLabel lbtitle;
-    private javax.swing.JTextField tfnp;
+    private javax.swing.JPasswordField pf_pass;
+    private javax.swing.JTextField tf_empnum;
     // End of variables declaration//GEN-END:variables
 }
