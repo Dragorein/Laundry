@@ -3,6 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package laundry;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -10,11 +15,19 @@
  */
 public class Login extends javax.swing.JFrame {
 
+    Connection con;
+    Statement stat;
+    ResultSet rs;
+    String sql;
     /**
      * Creates new form Menu
      */
     public Login() {
         initComponents();
+        Connect DB = new Connect();
+        DB.config();
+        con = DB.con;
+        stat = DB.stm;
     }
 
     /**
@@ -26,39 +39,39 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tfnp = new javax.swing.JTextField();
-        jpnp = new javax.swing.JPasswordField();
-        lbnp = new javax.swing.JLabel();
-        lbjp = new javax.swing.JLabel();
-        btlogin = new javax.swing.JButton();
-        lbtitle = new javax.swing.JLabel();
+        tf_empnum = new javax.swing.JTextField();
+        pf_pass = new javax.swing.JPasswordField();
+        lb_np = new javax.swing.JLabel();
+        lb_jp = new javax.swing.JLabel();
+        bt_login = new javax.swing.JButton();
+        lb_title = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Laundry App v0.0.0");
 
-        tfnp.addActionListener(new java.awt.event.ActionListener() {
+        tf_empnum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfnpActionPerformed(evt);
+                tf_empnumActionPerformed(evt);
             }
         });
 
-        lbnp.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        lbnp.setText("Nomor Pegawai");
+        lb_np.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        lb_np.setText("Nomor Pegawai");
 
-        lbjp.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        lbjp.setText("Password");
+        lb_jp.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        lb_jp.setText("Password");
 
-        btlogin.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btlogin.setText("Login");
-        btlogin.addActionListener(new java.awt.event.ActionListener() {
+        bt_login.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        bt_login.setText("Login");
+        bt_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btloginActionPerformed(evt);
+                bt_loginActionPerformed(evt);
             }
         });
 
-        lbtitle.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
-        lbtitle.setText("Laundry Login");
-        lbtitle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lb_title.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        lb_title.setText("Laundry Login");
+        lb_title.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,42 +80,59 @@ public class Login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbnp)
-                    .addComponent(tfnp, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbjp)
-                    .addComponent(lbtitle, javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btlogin, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpnp, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lb_np)
+                    .addComponent(tf_empnum, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lb_jp)
+                    .addComponent(lb_title, javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(bt_login, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pf_pass, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(100, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addComponent(lbtitle)
+                .addComponent(lb_title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addComponent(lbnp)
+                .addComponent(lb_np)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfnp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tf_empnum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(lbjp)
+                .addComponent(lb_jp)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpnp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pf_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
-                .addComponent(btlogin)
+                .addComponent(bt_login)
                 .addGap(80, 80, 80))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfnpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfnpActionPerformed
+    private void tf_empnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_empnumActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfnpActionPerformed
+    }//GEN-LAST:event_tf_empnumActionPerformed
 
-    private void btloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btloginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btloginActionPerformed
+    private void bt_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_loginActionPerformed
+        try {
+            String emp_num = tf_empnum.getText();
+            String emp_pass = pf_pass.getText();
+            sql = "SELECT * FROM employee WHERE emp_num='"+emp_num+"'";
+            rs = stat.executeQuery(sql);
+            if(rs.next()){
+                if(emp_num.equals(rs.getString("emp_num")) && emp_pass.equals(rs.getString("emp_password"))) {
+                    new MainMenu().setVisible(true);
+                    dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "username atau password salah");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "username atau password salah");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_bt_loginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,11 +171,11 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btlogin;
-    private javax.swing.JPasswordField jpnp;
-    private javax.swing.JLabel lbjp;
-    private javax.swing.JLabel lbnp;
-    private javax.swing.JLabel lbtitle;
-    private javax.swing.JTextField tfnp;
+    private javax.swing.JButton bt_login;
+    private javax.swing.JLabel lb_jp;
+    private javax.swing.JLabel lb_np;
+    private javax.swing.JLabel lb_title;
+    private javax.swing.JPasswordField pf_pass;
+    private javax.swing.JTextField tf_empnum;
     // End of variables declaration//GEN-END:variables
 }
