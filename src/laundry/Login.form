@@ -27,11 +27,11 @@
           <Group type="102" attributes="0">
               <EmptySpace min="100" pref="100" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lbnp" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lb_np" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="tf_empnum" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                  <Component id="lbjp" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbtitle" alignment="2" min="-2" max="-2" attributes="0"/>
-                  <Component id="btlogin" alignment="2" min="-2" pref="200" max="-2" attributes="0"/>
+                  <Component id="lb_jp" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lb_title" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_login" alignment="2" min="-2" pref="200" max="-2" attributes="0"/>
                   <Component id="pf_pass" alignment="2" min="-2" pref="200" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="100" max="32767" attributes="0"/>
@@ -42,17 +42,17 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-              <Component id="lbtitle" min="-2" max="-2" attributes="0"/>
+              <Component id="lb_title" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="19" max="32767" attributes="0"/>
-              <Component id="lbnp" min="-2" max="-2" attributes="0"/>
+              <Component id="lb_np" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="tf_empnum" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-              <Component id="lbjp" min="-2" max="-2" attributes="0"/>
+              <Component id="lb_jp" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="pf_pass" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
-              <Component id="btlogin" min="-2" max="-2" attributes="0"/>
+              <Component id="bt_login" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -66,7 +66,7 @@
     </Component>
     <Component class="javax.swing.JPasswordField" name="pf_pass">
     </Component>
-    <Component class="javax.swing.JLabel" name="lbnp">
+    <Component class="javax.swing.JLabel" name="lb_np">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Roboto" size="12" style="0"/>
@@ -74,7 +74,7 @@
         <Property name="text" type="java.lang.String" value="Nomor Pegawai"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbjp">
+    <Component class="javax.swing.JLabel" name="lb_jp">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Roboto" size="12" style="0"/>
@@ -82,7 +82,7 @@
         <Property name="text" type="java.lang.String" value="Password"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btlogin">
+    <Component class="javax.swing.JButton" name="bt_login">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Roboto" size="12" style="0"/>
@@ -90,10 +90,10 @@
         <Property name="text" type="java.lang.String" value="Login"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btloginActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_loginActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbtitle">
+    <Component class="javax.swing.JLabel" name="lb_title">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Roboto Black" size="24" style="0"/>
