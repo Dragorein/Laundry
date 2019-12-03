@@ -45,8 +45,8 @@ public class InputCucianKhusus extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         bt_cancel = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        jm_menu = new javax.swing.JMenu();
+        jm_logout = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,11 +113,11 @@ public class InputCucianKhusus extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("Menu");
-        jMenuBar1.add(jMenu1);
+        jm_menu.setText("Menu");
+        jMenuBar1.add(jm_menu);
 
-        jMenu3.setText("Logout");
-        jMenuBar1.add(jMenu3);
+        jm_logout.setText("Logout");
+        jMenuBar1.add(jm_logout);
 
         setJMenuBar(jMenuBar1);
 
@@ -256,8 +256,6 @@ public class InputCucianKhusus extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
@@ -268,5 +266,7 @@ public class InputCucianKhusus extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JMenu jm_logout;
+    private javax.swing.JMenu jm_menu;
     // End of variables declaration//GEN-END:variables
 }

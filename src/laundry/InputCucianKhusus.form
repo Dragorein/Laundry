@@ -4,12 +4,12 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="jm_menu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Menu"/>
           </Properties>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu3">
+        <Menu class="javax.swing.JMenu" name="jm_logout">
           <Properties>
             <Property name="text" type="java.lang.String" value="Logout"/>
           </Properties>
