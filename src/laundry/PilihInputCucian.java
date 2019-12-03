@@ -27,34 +27,58 @@ public class PilihInputCucian extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lb_title = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        bt_kiloan = new javax.swing.JButton();
+        bt_satuan = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        jm_utama = new javax.swing.JMenu();
+        jm_logout = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel1.setText("Input Cucian");
+        lb_title.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        lb_title.setText("Input Cucian");
 
-        jButton1.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jButton1.setText("Kiloan");
+        bt_kiloan.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        bt_kiloan.setText("Kiloan");
+        bt_kiloan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_kiloanActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jButton2.setText("Satuan");
+        bt_satuan.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        bt_satuan.setText("Satuan");
+        bt_satuan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_satuanActionPerformed(evt);
+            }
+        });
 
-        jMenu1.setText("Dashboard");
-        jMenuBar1.add(jMenu1);
+        jm_utama.setText("Menu");
+        jm_utama.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jm_utamaMenuSelected(evt);
+            }
+        });
+        jMenuBar1.add(jm_utama);
 
-        jMenu2.setText("Transaksi");
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("Logout");
-        jMenuBar1.add(jMenu3);
+        jm_logout.setText("Logout");
+        jm_logout.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jm_logoutMenuSelected(evt);
+            }
+        });
+        jMenuBar1.add(jm_logout);
 
         setJMenuBar(jMenuBar1);
 
@@ -64,32 +88,52 @@ public class PilihInputCucian extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(249, 249, 249)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bt_kiloan, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bt_satuan, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lb_title)
+                .addGap(254, 254, 254))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
+                .addComponent(lb_title)
+                .addGap(27, 27, 27)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
-                .addContainerGap(59, Short.MAX_VALUE))
+                    .addComponent(bt_kiloan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bt_satuan, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jm_utamaMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jm_utamaMenuSelected
+        new MainMenu().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jm_utamaMenuSelected
+
+    private void jm_logoutMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jm_logoutMenuSelected
+        new Login().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jm_logoutMenuSelected
+
+    private void bt_kiloanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_kiloanActionPerformed
+        new InputCucianKilo().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_bt_kiloanActionPerformed
+
+    private void bt_satuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_satuanActionPerformed
+        new InputCucianKhusus().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_bt_satuanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,13 +172,12 @@ public class PilihInputCucian extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
+    private javax.swing.JButton bt_kiloan;
+    private javax.swing.JButton bt_satuan;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JMenu jm_logout;
+    private javax.swing.JMenu jm_utama;
+    private javax.swing.JLabel lb_title;
     // End of variables declaration//GEN-END:variables
 }
