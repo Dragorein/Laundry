@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package laundry;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,6 +19,8 @@ public class DaftarCucian extends javax.swing.JFrame {
      */
     public DaftarCucian() {
         initComponents();
+        load_table();
+        
     }
 
     /**
@@ -43,21 +48,22 @@ public class DaftarCucian extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "Kiloan", "Dicuci", "Sel"},
-                {"2", "Karpet", "Antri", "Lylia"},
-                {"3", "Jas", "Dicuci", "Andi"},
-                {"4", "Boneka", "Selesai", "Beni"},
-                {"5", "Kiloan", "Antri", "Budi"}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "No", "Jenis Laundry", "Status", "Nama Customer"
+                "Title1", "Title2"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-        }
 
         jToggleButton1.setText("Edit ");
         jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -133,14 +139,47 @@ public class DaftarCucian extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
-        new EditCucian().show();
+        
+
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
         // TODO add your handling code here:
-        dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        
+        EditCucian cuci= new EditCucian();
+        cuci.setVisible(true);
+        int baris = jTable1.rowAtPoint(evt.getPoint());
+        String nama = jTable1.getValueAt(baris, 3).toString();
+        cuci.setnama(nama);
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void load_table(){
+        // membuat tampilan model tabel
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("No");
+        model.addColumn("Jenis Laundry");
+        model.addColumn("Status");
+        model.addColumn("Nama Customer");
+        
+        //menampilkan data database kedalam tabel
+        try {
+            int no=1;
+            String sql = "select * from wash_list";
+            java.sql.Connection conn = (Connection) Connect.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet rs = stm.executeQuery(sql);
+            while(rs.next()){
+                model.addRow(new Object[]{no++,rs.getString(1),rs.getString(7), rs.getString(3)});
+            }
+            jTable1.setModel(model);
+        } catch (Exception e) {
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -175,6 +214,7 @@ public class DaftarCucian extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

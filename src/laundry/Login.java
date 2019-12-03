@@ -5,8 +5,6 @@
  */
 package laundry;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,19 +13,13 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
-    Connection con;
-    Statement stat;
-    ResultSet rs;
-    String sql;
+   
     /**
      * Creates new form Menu
      */
     public Login() {
         initComponents();
-        Connect DB = new Connect();
-        DB.config();
-        con = DB.con;
-        stat = DB.stm;
+       
     }
 
     /**
@@ -116,8 +108,10 @@ public class Login extends javax.swing.JFrame {
     private void btloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btloginActionPerformed
         try {
             String emp_code = tf_empnum.getText();
-            sql = "SELECT * FROM employee WHERE emp_num='"+emp_code+"'";
-            rs = stat.executeQuery(sql);
+            String sql = "SELECT * FROM employee WHERE emp_num='"+emp_code+"'";
+            java.sql.Connection conn = (Connection) Connect.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet rs = stm.executeQuery(sql);
             if(rs.next()){
                 JOptionPane.showMessageDialog(null, rs.getString("emp_name"));
             }else{

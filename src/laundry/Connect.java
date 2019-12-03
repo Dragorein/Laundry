@@ -6,7 +6,7 @@
 package laundry;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Statement;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,21 +14,17 @@ import javax.swing.JOptionPane;
  * @author Franz
  */
 public class Connect {
-    public static Connection con;
-    public static Statement stm;
-    
-    public void config(){
+    private static Connection mysqlconfig;
+    public static Connection configDB()throws SQLException{
         try {
-            String url = "jdbc:mysql://localhost:3306/laundry";
-            String userName = "root";
-            String password = "";
-            
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection(url, userName, password);
-            stm = con.createStatement();
-//            JOptionPane.showMessageDialog(null,"koneksi berhasil");
+            String url="jdbc:mysql://localhost:3306/laundry"; //url database
+            String user="root"; //user database
+            String pass=""; //password database
+            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+            mysqlconfig=DriverManager.getConnection(url, user, pass);            
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"koneksi gagal " +e.getMessage());
+            System.err.println("koneksi gagal "+e.getMessage()); //perintah menampilkan error pada koneksi
         }
-    }
+        return mysqlconfig;
+    }    
 }
