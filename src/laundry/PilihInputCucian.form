@@ -6,18 +6,10 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jm_utama">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Menu"/>
+            <Property name="text" type="java.lang.String" value="Back"/>
           </Properties>
           <Events>
             <EventHandler event="menuSelected" listener="javax.swing.event.MenuListener" parameters="javax.swing.event.MenuEvent" handler="jm_utamaMenuSelected"/>
-          </Events>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jm_logout">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Logout"/>
-          </Properties>
-          <Events>
-            <EventHandler event="menuSelected" listener="javax.swing.event.MenuListener" parameters="javax.swing.event.MenuEvent" handler="jm_logoutMenuSelected"/>
           </Events>
         </Menu>
       </SubComponents>

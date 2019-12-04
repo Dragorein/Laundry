@@ -55,9 +55,6 @@ public class EditCucian extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         txt_alamat = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
 
         jScrollPane1.setViewportView(jEditorPane1);
 
@@ -149,24 +146,6 @@ public class EditCucian extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-
-        jMenu1.setText("Menu");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(jMenu1);
-
-        jMenu5.setText("Logout");
-        jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu5MouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(jMenu5);
-
-        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -273,7 +252,7 @@ public class EditCucian extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addComponent(txt_harga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton3))
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
 
         pack();
@@ -344,18 +323,6 @@ public class EditCucian extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CBJenisActionPerformed
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        // TODO add your handling code here:
-        new MainMenu().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenu1MouseClicked
-
-    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
-        // TODO add your handling code here:
-        new Login().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenu5MouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -388,9 +355,6 @@ public class EditCucian extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField txt_alamat;

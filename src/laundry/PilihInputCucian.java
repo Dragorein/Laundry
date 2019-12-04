@@ -33,7 +33,6 @@ public class PilihInputCucian extends javax.swing.JFrame {
         bt_satuan = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jm_utama = new javax.swing.JMenu();
-        jm_logout = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,7 +55,7 @@ public class PilihInputCucian extends javax.swing.JFrame {
             }
         });
 
-        jm_utama.setText("Menu");
+        jm_utama.setText("Back");
         jm_utama.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
@@ -67,18 +66,6 @@ public class PilihInputCucian extends javax.swing.JFrame {
             }
         });
         jMenuBar1.add(jm_utama);
-
-        jm_logout.setText("Logout");
-        jm_logout.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jm_logoutMenuSelected(evt);
-            }
-        });
-        jMenuBar1.add(jm_logout);
 
         setJMenuBar(jMenuBar1);
 
@@ -119,11 +106,6 @@ public class PilihInputCucian extends javax.swing.JFrame {
         new MainMenu().setVisible(true);
         dispose();
     }//GEN-LAST:event_jm_utamaMenuSelected
-
-    private void jm_logoutMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jm_logoutMenuSelected
-        new Login().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jm_logoutMenuSelected
 
     private void bt_kiloanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_kiloanActionPerformed
         new InputCucianKilo().setVisible(true);
@@ -176,7 +158,6 @@ public class PilihInputCucian extends javax.swing.JFrame {
     private javax.swing.JButton bt_satuan;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JMenu jm_logout;
     private javax.swing.JMenu jm_utama;
     private javax.swing.JLabel lb_title;
     // End of variables declaration//GEN-END:variables

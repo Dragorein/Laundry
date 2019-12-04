@@ -38,7 +38,6 @@ public class DaftarCucian extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,21 +63,13 @@ public class DaftarCucian extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Daftar Cucian");
 
-        jMenu1.setText("Menu");
+        jMenu1.setText("Back");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu1MouseClicked(evt);
             }
         });
         jMenuBar1.add(jMenu1);
-
-        jMenu4.setText("Logout");
-        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu4MouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -142,12 +133,6 @@ public class DaftarCucian extends javax.swing.JFrame {
         new MainMenu().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
-
-    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
-        // TODO add your handling code here:
-        new Login().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenu4MouseClicked
 
     private void load_table(){
         // membuat tampilan model tabel
@@ -216,7 +201,6 @@ public class DaftarCucian extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
