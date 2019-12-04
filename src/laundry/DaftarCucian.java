@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package laundry;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,6 +19,8 @@ public class DaftarCucian extends javax.swing.JFrame {
      */
     public DaftarCucian() {
         initComponents();
+        load_table();
+        
     }
 
     /**
@@ -43,21 +48,22 @@ public class DaftarCucian extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "Kiloan", "Dicuci", "Sel"},
-                {"2", "Karpet", "Antri", "Lylia"},
-                {"3", "Jas", "Dicuci", "Andi"},
-                {"4", "Boneka", "Selesai", "Beni"},
-                {"5", "Kiloan", "Antri", "Budi"}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "No", "Jenis Laundry", "Status", "Nama Customer"
+                "Title1", "Title2"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-        }
 
         jToggleButton1.setText("Edit ");
         jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -103,20 +109,20 @@ public class DaftarCucian extends javax.swing.JFrame {
                             .addComponent(jToggleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 848, Short.MAX_VALUE))
                     .addComponent(jSeparator1))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(156, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(144, 144, 144))
+                .addGap(385, 385, 385))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel1)
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,14 +139,60 @@ public class DaftarCucian extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
-        new EditCucian().show();
+        
+
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
         // TODO add your handling code here:
-        dispose();
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        EditCucian cuci= new EditCucian();
+        cuci.setVisible(true);
+        dispose();
+        int baris = jTable1.rowAtPoint(evt.getPoint());
+        String nama = jTable1.getValueAt(baris, 6).toString();
+        String status = jTable1.getValueAt(baris, 4).toString();
+        String jenis = jTable1.getValueAt(baris, 2).toString();
+        String qty = jTable1.getValueAt(baris, 3).toString();
+        String harga = jTable1.getValueAt(baris, 5).toString();
+        String no = jTable1.getValueAt(baris, 1).toString();
+        
+        cuci.setnama(nama);
+        cuci.setstatus(status);
+        cuci.setjenis(jenis);
+        cuci.setberat(qty);
+        cuci.setharga(harga);
+        cuci.setno(no);
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void load_table(){
+        // membuat tampilan model tabel
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("No");
+        model.addColumn("Wash Id");
+        model.addColumn("Jenis Laundry");
+        model.addColumn("Total Quantity");
+        model.addColumn("Status");
+        model.addColumn("Harga");
+        model.addColumn("Nama Customer");
+        
+        //menampilkan data database kedalam tabel
+        try {
+            int no=1;
+            String sql = "select * from wash_list";
+            java.sql.Connection conn = (Connection) Connect.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet rs = stm.executeQuery(sql);
+            while(rs.next()){
+                model.addRow(new Object[]{no++,rs.getString(1),rs.getString(4), rs.getString(5), rs.getString(7), rs.getString(6), rs.getString(3)});
+            }
+            jTable1.setModel(model);
+        } catch (Exception e) {
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -175,6 +227,7 @@ public class DaftarCucian extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

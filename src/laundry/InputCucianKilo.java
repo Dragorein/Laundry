@@ -5,6 +5,7 @@
  */
 package laundry;
 
+import java.sql.Connection;
 import javax.swing.JOptionPane;
 
 /**
@@ -212,13 +213,15 @@ public class InputCucianKilo extends javax.swing.JFrame {
 
     private void B_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_SubmitActionPerformed
         // TODO add your handling code here:
-        String nama = this.Tf_Nama.getText();
-        String telp = this.Tf_Telp.getText();
-        String jenis = this.Lb_Jenis.getText();
-        int jumlah = Integer.parseInt(this.Tf_Jumlah.getText());
-        int harga = Integer.parseInt(this.Tf_Harga.getText());
-        
-        JOptionPane.showInputDialog(null, nama + '\n' + telp + '\n' + jenis + '\n' + jumlah + '\n' + harga);
+        try {
+            String sql = "INSERT INTO wash_list(wash_cust_name, wash_type, wash_qty, wash_price, wash_status) values('"+Tf_Nama.getText()+"','"+Lb_Jenis.getText()+"',"+Tf_Jumlah.getText()+","+Tf_Harga.getText()+",'Antri');";
+            java.sql.Connection conn=(Connection)Connect.configDB();
+            java.sql.PreparedStatement pst=conn.prepareStatement(sql);
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "data berhasil di tambahkan");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Penambahan Data Gagal"+e.getMessage());
+        }
     }//GEN-LAST:event_B_SubmitActionPerformed
 
     /**

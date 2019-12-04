@@ -19,8 +19,7 @@ public class Laundry {
          /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InputCucianKhusus().setVisible(true);
-                new InputCucianKilo().setVisible(true);
+                new DaftarCucian().setVisible(true);
             }
         });
     }
