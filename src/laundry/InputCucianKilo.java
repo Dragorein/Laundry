@@ -42,7 +42,7 @@ public class InputCucianKilo extends javax.swing.JFrame {
         Tf_Jumlah = new javax.swing.JTextField();
         Tf_Harga = new javax.swing.JTextField();
         B_Submit = new javax.swing.JButton();
-        B_Cancel = new javax.swing.JButton();
+        bt_cancel = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         Lb_Jenis = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -51,7 +51,6 @@ public class InputCucianKilo extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,7 +74,6 @@ public class InputCucianKilo extends javax.swing.JFrame {
         jLabel6.setText("Harga");
 
         Tf_Nama.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
-        Tf_Nama.setText("sel");
         Tf_Nama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Tf_NamaActionPerformed(evt);
@@ -83,13 +81,10 @@ public class InputCucianKilo extends javax.swing.JFrame {
         });
 
         Tf_Telp.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
-        Tf_Telp.setText("089684679597");
 
         Tf_Jumlah.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
-        Tf_Jumlah.setText("2");
 
         Tf_Harga.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
-        Tf_Harga.setText("20000");
         Tf_Harga.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Tf_HargaActionPerformed(evt);
@@ -104,8 +99,13 @@ public class InputCucianKilo extends javax.swing.JFrame {
             }
         });
 
-        B_Cancel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        B_Cancel.setText("Cancel");
+        bt_cancel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        bt_cancel.setText("Cancel");
+        bt_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cancelActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         jLabel7.setText("Kg");
@@ -124,13 +124,21 @@ public class InputCucianKilo extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         jLabel8.setText("Alamat");
 
-        jMenu1.setText("Dashboard");
+        jMenu1.setText("Menu");
+        jMenu1.setToolTipText("");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Transaksi");
-        jMenuBar1.add(jMenu2);
-
         jMenu3.setText("Logout");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -171,7 +179,7 @@ public class InputCucianKilo extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(B_Submit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(B_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(bt_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Lb_Jenis)
                                 .addGap(0, 400, Short.MAX_VALUE))
@@ -220,7 +228,7 @@ public class InputCucianKilo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(Tf_Harga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(B_Cancel)
+                    .addComponent(bt_cancel)
                     .addComponent(jLabel9))
                 .addContainerGap())
         );
@@ -239,7 +247,7 @@ public class InputCucianKilo extends javax.swing.JFrame {
     private void B_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_SubmitActionPerformed
         // TODO add your handling code here:
         try {
-            String sql = "INSERT INTO wash_list(wash_cust_name, wash_type, wash_qty, wash_price, wash_status) values('"+Tf_Nama.getText()+"','"+Lb_Jenis.getText()+"',"+Tf_Jumlah.getText()+","+Tf_Harga.getText()+",'Antri');";
+            String sql = "INSERT INTO wash_list (wash_cust_name, wash_cust_phone, wash_cust_address, wash_type, wash_qty, wash_price, wash_status) values('"+Tf_Nama.getText()+"','"+Tf_Telp.getText()+"','"+Ta_Alamat.getText()+"','"+Lb_Jenis.getText()+"',"+Tf_Jumlah.getText()+","+Tf_Harga.getText()+",'Antri');";
             java.sql.Connection conn=(Connection)Connect.configDB();
             java.sql.PreparedStatement pst=conn.prepareStatement(sql);
             pst.execute();
@@ -247,12 +255,26 @@ public class InputCucianKilo extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Penambahan Data Gagal"+e.getMessage());
         }
+        new PilihInputCucian().setVisible(true);
+        dispose();
     }//GEN-LAST:event_B_SubmitActionPerformed
 
     private void bt_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelActionPerformed
         new PilihInputCucian().setVisible(true);
         dispose();
     }//GEN-LAST:event_bt_cancelActionPerformed
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        // TODO add your handling code here:
+        new Login().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu3MouseClicked
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+        new MainMenu().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -290,7 +312,6 @@ public class InputCucianKilo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton B_Cancel;
     private javax.swing.JButton B_Submit;
     private javax.swing.JLabel Lb_Jenis;
     private javax.swing.JTextArea Ta_Alamat;
@@ -298,6 +319,7 @@ public class InputCucianKilo extends javax.swing.JFrame {
     private javax.swing.JTextField Tf_Jumlah;
     private javax.swing.JTextField Tf_Nama;
     private javax.swing.JTextField Tf_Telp;
+    private javax.swing.JButton bt_cancel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -308,7 +330,6 @@ public class InputCucianKilo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;

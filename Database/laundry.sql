@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Des 2019 pada 14.07
+-- Waktu pembuatan: 04 Des 2019 pada 15.33
 -- Versi server: 10.3.16-MariaDB
 -- Versi PHP: 7.3.6
 
@@ -21,26 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `laundry`
 --
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `customer`
---
-
-CREATE TABLE `customer` (
-  `customer_id` int(11) NOT NULL,
-  `customer_name` varchar(255) NOT NULL,
-  `customer_address` varchar(255) NOT NULL,
-  `customer_phone` int(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `customer`
---
-
-INSERT INTO `customer` (`customer_id`, `customer_name`, `customer_address`, `customer_phone`) VALUES
-(1, 'Marco', 'Melon', 2141111);
 
 -- --------------------------------------------------------
 
@@ -70,12 +50,13 @@ INSERT INTO `employee` (`emp_id`, `emp_num`, `emp_name`, `emp_password`, `emp_ro
 --
 
 CREATE TABLE `wash_list` (
-  `wash_id` int(3) NOT NULL,
-  `customer_id` int(11) NOT NULL,
+  `wash_id` int(11) NOT NULL,
   `wash_cust_name` varchar(255) NOT NULL,
+  `wash_cust_phone` int(30) NOT NULL,
+  `wash_cust_address` varchar(255) NOT NULL,
   `wash_type` varchar(20) NOT NULL,
   `wash_qty` int(3) NOT NULL,
-  `wash_price` int(10) NOT NULL,
+  `wash_price` int(11) NOT NULL,
   `wash_status` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -83,18 +64,12 @@ CREATE TABLE `wash_list` (
 -- Dumping data untuk tabel `wash_list`
 --
 
-INSERT INTO `wash_list` (`wash_id`, `customer_id`, `wash_cust_name`, `wash_type`, `wash_qty`, `wash_price`, `wash_status`) VALUES
-(1, 1, 'marco', 'Kiloan', 2, 10000, 'dicuci');
+INSERT INTO `wash_list` (`wash_id`, `wash_cust_name`, `wash_cust_phone`, `wash_cust_address`, `wash_type`, `wash_qty`, `wash_price`, `wash_status`) VALUES
+(6, 'Marco', 2147483647, 'Jalan Melon 6 Blok SM no 3', 'Kiloan', 2, 10000, 'Antri');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indeks untuk tabel `customer`
---
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`customer_id`);
 
 --
 -- Indeks untuk tabel `employee`
@@ -107,18 +82,11 @@ ALTER TABLE `employee`
 -- Indeks untuk tabel `wash_list`
 --
 ALTER TABLE `wash_list`
-  ADD PRIMARY KEY (`wash_id`),
-  ADD KEY `FK_customer` (`customer_id`);
+  ADD PRIMARY KEY (`wash_id`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
-
---
--- AUTO_INCREMENT untuk tabel `customer`
---
-ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `employee`
@@ -130,17 +98,7 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT untuk tabel `wash_list`
 --
 ALTER TABLE `wash_list`
-  MODIFY `wash_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
---
-
---
--- Ketidakleluasaan untuk tabel `wash_list`
---
-ALTER TABLE `wash_list`
-  ADD CONSTRAINT `FK_customer` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`);
+  MODIFY `wash_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

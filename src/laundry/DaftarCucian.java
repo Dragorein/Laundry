@@ -38,8 +38,6 @@ public class DaftarCucian extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,17 +64,20 @@ public class DaftarCucian extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Daftar Cucian");
 
-        jMenu1.setText("Dashboard");
+        jMenu1.setText("Menu");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Transaksi");
-
-        jMenuItem1.setText("Daftar Trabsaksi Harian");
-        jMenu2.add(jMenuItem1);
-
-        jMenuBar1.add(jMenu2);
-
         jMenu4.setText("Logout");
+        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu4MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -117,20 +118,36 @@ public class DaftarCucian extends javax.swing.JFrame {
         cuci.setVisible(true);
         dispose();
         int baris = jTable1.rowAtPoint(evt.getPoint());
-        String nama = jTable1.getValueAt(baris, 6).toString();
-        String status = jTable1.getValueAt(baris, 4).toString();
-        String jenis = jTable1.getValueAt(baris, 2).toString();
-        String qty = jTable1.getValueAt(baris, 3).toString();
-        String harga = jTable1.getValueAt(baris, 5).toString();
+        String nama = jTable1.getValueAt(baris, 2).toString();
+        String telepon = jTable1.getValueAt(baris, 3).toString();
+        String status = jTable1.getValueAt(baris, 7).toString();
+        String jenis = jTable1.getValueAt(baris, 5).toString();
+        String qty = jTable1.getValueAt(baris, 6).toString();
+        String harga = jTable1.getValueAt(baris, 8).toString();
         String no = jTable1.getValueAt(baris, 1).toString();
+        String alamat = jTable1.getValueAt(baris, 4).toString();
         
         cuci.setnama(nama);
+        cuci.settelepon(telepon);
         cuci.setstatus(status);
         cuci.setjenis(jenis);
         cuci.setberat(qty);
         cuci.setharga(harga);
         cuci.setno(no);
+        cuci.setalamat(alamat);
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+        new MainMenu().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+        // TODO add your handling code here:
+        new Login().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu4MouseClicked
 
     private void load_table(){
         // membuat tampilan model tabel
@@ -154,7 +171,7 @@ public class DaftarCucian extends javax.swing.JFrame {
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet rs = stm.executeQuery(sql);
             while(rs.next()){
-                model.addRow(new Object[]{no++,rs.getString(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7),rs.getString(8)});
+                model.addRow(new Object[]{no++,rs.getString(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(8),rs.getString(7)});
             }
             jTable1.setModel(model);
         } catch (Exception e) {
@@ -199,10 +216,8 @@ public class DaftarCucian extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;

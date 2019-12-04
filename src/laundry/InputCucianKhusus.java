@@ -42,7 +42,7 @@ public class InputCucianKhusus extends javax.swing.JFrame {
         Tf_Jumlah = new javax.swing.JTextField();
         Tf_Harga = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        bt_cancel = new javax.swing.JButton();
         Cb_Jenis = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -73,7 +73,6 @@ public class InputCucianKhusus extends javax.swing.JFrame {
         jLabel6.setText("Harga");
 
         Tf_Nama.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        Tf_Nama.setText("sel");
         Tf_Nama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Tf_NamaActionPerformed(evt);
@@ -81,13 +80,10 @@ public class InputCucianKhusus extends javax.swing.JFrame {
         });
 
         Tf_Telp.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        Tf_Telp.setText("089684679597");
 
         Tf_Jumlah.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        Tf_Jumlah.setText("2");
 
         Tf_Harga.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        Tf_Harga.setText("20000");
 
         jButton1.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jButton1.setText("Submit");
@@ -97,8 +93,13 @@ public class InputCucianKhusus extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jButton2.setText("Cancel");
+        bt_cancel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        bt_cancel.setText("Cancel");
+        bt_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cancelActionPerformed(evt);
+            }
+        });
 
         Cb_Jenis.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Cb_Jenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jas", "Jaket", "Boneka", "Karpet" }));
@@ -115,9 +116,19 @@ public class InputCucianKhusus extends javax.swing.JFrame {
         jScrollPane1.setViewportView(Ta_Alamat);
 
         jMenu1.setText("Menu");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu1);
 
         jMenu3.setText("Logout");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -154,7 +165,7 @@ public class InputCucianKhusus extends javax.swing.JFrame {
                                 .addGap(49, 49, 49)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(bt_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(30, 30, 30))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,7 +213,7 @@ public class InputCucianKhusus extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(Tf_Harga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2)
+                    .addComponent(bt_cancel)
                     .addComponent(jLabel7))
                 .addContainerGap())
         );
@@ -225,12 +236,26 @@ public class InputCucianKhusus extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Penambahan Data Gagal"+e.getMessage());
         }
+        new PilihInputCucian().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bt_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelActionPerformed
         new PilihInputCucian().setVisible(true);
         dispose();
     }//GEN-LAST:event_bt_cancelActionPerformed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+        new MainMenu().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        // TODO add your handling code here:
+        new Login().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -274,6 +299,7 @@ public class InputCucianKhusus extends javax.swing.JFrame {
     private javax.swing.JTextField Tf_Jumlah;
     private javax.swing.JTextField Tf_Nama;
     private javax.swing.JTextField Tf_Telp;
+    private javax.swing.JButton bt_cancel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
