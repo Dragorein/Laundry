@@ -109,8 +109,10 @@ public class Login extends javax.swing.JFrame {
         try {
             String emp_num = tf_empnum.getText();
             String emp_pass = pf_pass.getText();
-            sql = "SELECT * FROM employee WHERE emp_num='"+emp_num+"'";
-            rs = stat.executeQuery(sql);
+            String sql = "SELECT * FROM employee WHERE emp_num='"+emp_num+"'";
+            java.sql.Connection conn = (Connection) Connect.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet rs = stm.executeQuery(sql);
             if(rs.next()){
                 if(emp_num.equals(rs.getString("emp_num")) && emp_pass.equals(rs.getString("emp_password"))) {
                     new MainMenu().setVisible(true);
