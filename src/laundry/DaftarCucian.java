@@ -84,7 +84,7 @@ public class DaftarCucian extends javax.swing.JFrame {
                     .addComponent(jScrollPane1))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(410, Short.MAX_VALUE)
+                .addContainerGap(411, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(385, 385, 385))
         );
@@ -156,7 +156,7 @@ public class DaftarCucian extends javax.swing.JFrame {
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet rs = stm.executeQuery(sql);
             while(rs.next()){
-                model.addRow(new Object[]{no++,rs.getString(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(8),rs.getString(7)});
+                model.addRow(new Object[]{no++,rs.getString(2),rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(11),rs.getString(8)});
             }
             jTable1.setModel(model);
         } catch (Exception e) {
