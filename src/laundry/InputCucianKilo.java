@@ -47,7 +47,7 @@ public class InputCucianKilo extends javax.swing.JFrame {
         Tf_Nama = new javax.swing.JTextField();
         Tf_Telp = new javax.swing.JTextField();
         B_Submit = new javax.swing.JButton();
-        bt_cancel = new javax.swing.JButton();
+        B_Cancel = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         Lb_Jenis = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -99,11 +99,11 @@ public class InputCucianKilo extends javax.swing.JFrame {
             }
         });
 
-        bt_cancel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        bt_cancel.setText("Cancel");
-        bt_cancel.addActionListener(new java.awt.event.ActionListener() {
+        B_Cancel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        B_Cancel.setText("Cancel");
+        B_Cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_cancelActionPerformed(evt);
+                B_CancelActionPerformed(evt);
             }
         });
 
@@ -180,7 +180,7 @@ public class InputCucianKilo extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(B_Submit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(bt_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(B_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Tf_Nama)
                                 .addGap(143, 143, 143))
@@ -284,8 +284,6 @@ public class InputCucianKilo extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Penambahan Data Gagal  "+e.getMessage());
         }
-        new PilihInputCucian().setVisible(true);
-        dispose();
     }//GEN-LAST:event_B_SubmitActionPerformed
 
     private void Sp_JumlahStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Sp_JumlahStateChanged
@@ -294,6 +292,12 @@ public class InputCucianKilo extends javax.swing.JFrame {
         
         Lb_Harga.setText(Integer.toString((Integer)Sp_Jumlah.getValue() * harga));
     }//GEN-LAST:event_Sp_JumlahStateChanged
+
+    private void B_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CancelActionPerformed
+        // TODO add your handling code here:
+         new PilihInputCucian().setVisible(true);
+         dispose();
+    }//GEN-LAST:event_B_CancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,6 +335,7 @@ public class InputCucianKilo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton B_Cancel;
     private javax.swing.JButton B_Submit;
     private javax.swing.JLabel Lb_Harga;
     private javax.swing.JLabel Lb_Jenis;
@@ -338,7 +343,6 @@ public class InputCucianKilo extends javax.swing.JFrame {
     private javax.swing.JTextArea Ta_Alamat;
     private javax.swing.JTextField Tf_Nama;
     private javax.swing.JTextField Tf_Telp;
-    private javax.swing.JButton bt_cancel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -348,6 +352,10 @@ public class InputCucianKilo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
