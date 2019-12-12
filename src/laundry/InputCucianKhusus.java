@@ -6,7 +6,14 @@
 package laundry;
 
 import java.sql.Connection;
+import java.util.Date;
+//import java.util.Calendar;
+import java.text.SimpleDateFormat;
+//import java.text.DateFormat;
+import java.sql.Timestamp;
 import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
+import java.util.UUID;
 
 /**
  *
@@ -39,15 +46,20 @@ public class InputCucianKhusus extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         Tf_Nama = new javax.swing.JTextField();
         Tf_Telp = new javax.swing.JTextField();
-        Tf_Jumlah = new javax.swing.JTextField();
-        Tf_Harga = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        bt_cancel = new javax.swing.JButton();
+        B_Cancel = new javax.swing.JButton();
         Cb_Jenis = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Ta_Alamat = new javax.swing.JTextArea();
+        Lb_Harga = new javax.swing.JLabel();
+        SpinnerNumberModel model = new SpinnerNumberModel(0,0,100,1);
+        Sp_Jumlah = new javax.swing.JSpinner(model);
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,10 +90,6 @@ public class InputCucianKhusus extends javax.swing.JFrame {
 
         Tf_Telp.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
 
-        Tf_Jumlah.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-
-        Tf_Harga.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-
         jButton1.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -90,16 +98,21 @@ public class InputCucianKhusus extends javax.swing.JFrame {
             }
         });
 
-        bt_cancel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        bt_cancel.setText("Cancel");
-        bt_cancel.addActionListener(new java.awt.event.ActionListener() {
+        B_Cancel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        B_Cancel.setText("Cancel");
+        B_Cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_cancelActionPerformed(evt);
+                B_CancelActionPerformed(evt);
             }
         });
 
         Cb_Jenis.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Cb_Jenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jas", "Jaket", "Boneka", "Karpet" }));
+        Cb_Jenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Cb_JenisActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Rp");
@@ -111,6 +124,27 @@ public class InputCucianKhusus extends javax.swing.JFrame {
         Ta_Alamat.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         Ta_Alamat.setRows(4);
         jScrollPane1.setViewportView(Ta_Alamat);
+
+        Lb_Harga.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Lb_Harga.setText("0");
+
+        Sp_Jumlah.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Sp_Jumlah.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                Sp_JumlahStateChanged(evt);
+            }
+        });
+
+        jMenu1.setText("Dashboard");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Transaksi");
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Logout");
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,13 +172,15 @@ public class InputCucianKhusus extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel7)
-                                        .addGap(37, 37, 37)
-                                        .addComponent(Tf_Harga, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE))
-                                    .addComponent(Tf_Jumlah))
-                                .addGap(49, 49, 49)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Lb_Harga, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                                        .addGap(49, 49, 49))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Sp_Jumlah)
+                                        .addGap(292, 292, 292)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(bt_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(B_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(30, 30, 30))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,9 +197,9 @@ public class InputCucianKhusus extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel1)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -178,22 +214,23 @@ public class InputCucianKhusus extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(Cb_Jenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(Tf_Jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Sp_Jumlah, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(jButton1)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(Tf_Harga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_cancel)
-                    .addComponent(jLabel7))
+                    .addComponent(B_Cancel)
+                    .addComponent(jLabel7)
+                    .addComponent(Lb_Harga))
                 .addContainerGap())
         );
 
@@ -206,8 +243,42 @@ public class InputCucianKhusus extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        //tanggal
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        
+        Date currentDate = new Date();
+        String current = sdf.format(currentDate);
+        
+        //menambahan estimasi
+        SimpleDateFormat ed = new SimpleDateFormat("yyyy-MM");
+        SimpleDateFormat f = new SimpleDateFormat("dd");
+        Date finishDate = new Date();
+        String finishMY = ed.format(finishDate);
+        String finishD = f.format(finishDate);
+        
+        int finishNew = Integer.parseInt(finishD) + 3;
+        
+        String finishNewD = String.valueOf(finishNew);
+        
+        String finish = finishMY+"-"+finishNewD;
+        
+        //Unique random
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        
+        SimpleDateFormat uq = new SimpleDateFormat("yyyMMdd");
+        String A = uq.format(timestamp);
+        UUID uid = UUID.randomUUID();
+        String B = String.valueOf(uid);
+        String string = B;
+        String[] parts = string.split("-");
+        String part1 = parts[1];
+        
+        String unique = A + part1;
+        
+        
         try {
-            String sql = "INSERT INTO wash_list (wash_cust_name, wash_cust_phone, wash_cust_address, wash_type, wash_qty, wash_price, wash_status) values('"+Tf_Nama.getText()+"','"+Tf_Telp.getText()+"','"+Ta_Alamat.getText()+"','"+Cb_Jenis.getSelectedItem()+"',"+Tf_Jumlah.getText()+","+Tf_Harga.getText()+",'Antri');";
+            String sql = "INSERT INTO wash_list(wash_key,wash_cust_name, wash_cust_phone, wash_cust_address, wash_type, wash_qty, wash_price, wash_status, wash_date_in, wash_date_out) values('"+ unique +"','" + Tf_Nama.getText() + "','" + Tf_Telp.getText() + "','" + Ta_Alamat.getText() + "','" + Cb_Jenis.getSelectedItem() + "'," + Sp_Jumlah.getValue() + "," + Lb_Harga.getText() + ",'Antri','" + current +"','" + finish +"');";
             java.sql.Connection conn=(Connection)Connect.configDB();
             java.sql.PreparedStatement pst=conn.prepareStatement(sql);
             pst.execute();
@@ -215,14 +286,35 @@ public class InputCucianKhusus extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Penambahan Data Gagal"+e.getMessage());
         }
-        new PilihInputCucian().setVisible(true);
-        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void bt_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelActionPerformed
-        new PilihInputCucian().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_bt_cancelActionPerformed
+    private void Sp_JumlahStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Sp_JumlahStateChanged
+        
+        String jenis = (String) Cb_Jenis.getSelectedItem();
+        int harga;
+        
+        if(jenis == "Jaket"){
+            harga = 12000;
+        } else if (jenis == "Jas"){
+            harga = 10000;
+        } else if (jenis == "Boneka"){
+            harga = 10000;
+        } else {
+            harga = 25000;
+        }
+        
+        Lb_Harga.setText(Integer.toString((Integer)Sp_Jumlah.getValue() * harga));
+    }//GEN-LAST:event_Sp_JumlahStateChanged
+
+    private void Cb_JenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cb_JenisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Cb_JenisActionPerformed
+
+    private void B_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_CancelActionPerformed
+        // TODO add your handling code here:
+         new PilihInputCucian().setVisible(true);
+         dispose();
+    }//GEN-LAST:event_B_CancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -260,13 +352,13 @@ public class InputCucianKhusus extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton B_Cancel;
     private javax.swing.JComboBox<String> Cb_Jenis;
+    private javax.swing.JLabel Lb_Harga;
+    private javax.swing.JSpinner Sp_Jumlah;
     private javax.swing.JTextArea Ta_Alamat;
-    private javax.swing.JTextField Tf_Harga;
-    private javax.swing.JTextField Tf_Jumlah;
     private javax.swing.JTextField Tf_Nama;
     private javax.swing.JTextField Tf_Telp;
-    private javax.swing.JButton bt_cancel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -276,6 +368,10 @@ public class InputCucianKhusus extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
