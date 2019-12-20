@@ -40,6 +40,8 @@ public class LaporanBulanan extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         CB_Periode = new javax.swing.JComboBox<>();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,6 +91,16 @@ public class LaporanBulanan extends javax.swing.JFrame {
             }
         });
 
+        jMenu1.setText("Back");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -131,7 +143,7 @@ public class LaporanBulanan extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(CB_Periode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();
@@ -175,16 +187,22 @@ public class LaporanBulanan extends javax.swing.JFrame {
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet rs = stm.executeQuery(sql);
             while(rs.next()){
-                model.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10)});
-                harga = harga + Integer.parseInt(rs.getString(7));
+                model.addRow(new Object[]{rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11)});
+                harga = harga + Integer.parseInt(rs.getString(8));
                 jumlah = jumlah + 1;
             }
             t_Tbulanan.setModel(model);
-            jLabel5.setText("Rp "+Integer.toString(harga));
+            jLabel5.setText("Rp."+Integer.toString(harga));
             jLabel4.setText(Integer.toString(jumlah));
         } catch (Exception e) {
         }
     }//GEN-LAST:event_CB_PeriodeItemStateChanged
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+        new MainMenu().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -229,6 +247,8 @@ public class LaporanBulanan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable t_Tbulanan;
     // End of variables declaration//GEN-END:variables
