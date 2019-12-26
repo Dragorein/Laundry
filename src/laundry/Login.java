@@ -115,7 +115,13 @@ public class Login extends javax.swing.JFrame {
             java.sql.ResultSet rs = stm.executeQuery(sql);
             if(rs.next()){
                 if(emp_num.equals(rs.getString("emp_num")) && emp_pass.equals(rs.getString("emp_password"))) {
-                    new MainMenu().setVisible(true);
+                    MainMenu menu = new MainMenu();
+                    if(Integer.parseInt(rs.getString("emp_role")) == 1) {
+                        menu.role = 1;
+                        menu.bt_harian.setVisible(true);
+                        menu.bt_bulanan.setVisible(true);
+                    }
+                    menu.setVisible(true);
                     dispose();
                 }else{
                     JOptionPane.showMessageDialog(null, "username atau password salah");

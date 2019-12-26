@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Adrian Sterling
  */
 public class TransaksiHarian extends javax.swing.JFrame {
+    public static int role = 0;
 
     /**
      * Creates new form UITransaksiHarian
@@ -128,7 +129,13 @@ public class TransaksiHarian extends javax.swing.JFrame {
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
-        new MainMenu().setVisible(true);
+        MainMenu menu = new MainMenu();
+        if(this.role == 1) {
+            menu.role = 1;
+            menu.bt_harian.setVisible(true);
+            menu.bt_bulanan.setVisible(true);
+        }
+        menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 

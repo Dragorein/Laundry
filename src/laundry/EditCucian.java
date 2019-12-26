@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Marco Christopher
  */
 public class EditCucian extends javax.swing.JFrame {
+    public static int role = 0;
 
     /**
      * Creates new form EditCucian
@@ -280,7 +281,9 @@ public class EditCucian extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        new DaftarCucian().setVisible(true);
+        DaftarCucian daftar= new DaftarCucian();
+        daftar.role = this.role;
+        daftar.setVisible(true);
         dispose();
      
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -301,7 +304,9 @@ public class EditCucian extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Perubahan Data Gagal"+e.getMessage());
         } 
-        new DaftarCucian().setVisible(true);
+        DaftarCucian daftar= new DaftarCucian();
+        daftar.role = this.role;
+        daftar.setVisible(true);
         dispose();
          
          
@@ -327,7 +332,9 @@ public class EditCucian extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-        new DaftarCucian().setVisible(true);
+        DaftarCucian daftar= new DaftarCucian();
+        daftar.role = this.role;
+        daftar.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 

@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Marco Christopher
  */
 public class DaftarCucian extends javax.swing.JFrame {
+    public static int role = 0;
 
     /**
      * Creates new form DaftarCucian
@@ -105,7 +106,8 @@ public class DaftarCucian extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-        EditCucian cuci= new EditCucian();
+        EditCucian cuci = new EditCucian();
+        cuci.role = this.role;
         cuci.setVisible(true);
         dispose();
         int baris = jTable1.rowAtPoint(evt.getPoint());
@@ -130,7 +132,13 @@ public class DaftarCucian extends javax.swing.JFrame {
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
-        new MainMenu().setVisible(true);
+        MainMenu menu = new MainMenu();
+        if(this.role == 1) {
+            menu.role = 1;
+            menu.bt_harian.setVisible(true);
+            menu.bt_bulanan.setVisible(true);
+        }
+        menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 

@@ -20,6 +20,7 @@ import java.util.UUID;
  * @author wulfric
  */
 public class InputCucianKilo extends javax.swing.JFrame {
+    public static int role = 0;
 
     /**
      * Creates new form InputCucianKilo
@@ -56,10 +57,6 @@ public class InputCucianKilo extends javax.swing.JFrame {
         Lb_Alamat = new javax.swing.JLabel();
         Lb_Nama = new javax.swing.JLabel();
         Lb_Telp = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        Mn_Dashboard = new javax.swing.JMenu();
-        Mn_Transaksi = new javax.swing.JMenu();
-        Mn_Logout = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,47 +124,6 @@ public class InputCucianKilo extends javax.swing.JFrame {
 
         Lb_Telp.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         Lb_Telp.setText("telp");
-
-        Mn_Dashboard.setText("Dashboard");
-        Mn_Dashboard.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Mn_DashboardMouseClicked(evt);
-            }
-        });
-        Mn_Dashboard.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Mn_DashboardActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(Mn_Dashboard);
-
-        Mn_Transaksi.setText("Transaksi");
-        Mn_Transaksi.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Mn_TransaksiMouseClicked(evt);
-            }
-        });
-        Mn_Transaksi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Mn_TransaksiActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(Mn_Transaksi);
-
-        Mn_Logout.setText("Logout");
-        Mn_Logout.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Mn_LogoutMouseClicked(evt);
-            }
-        });
-        Mn_Logout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Mn_LogoutActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(Mn_Logout);
-
-        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -308,45 +264,11 @@ public class InputCucianKilo extends javax.swing.JFrame {
 
     private void Bt_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bt_CancelActionPerformed
         // TODO add your handling code here:
-         new PilihInputCucian().setVisible(true);
-         dispose();
+        PilihInputCucian pilihinput = new PilihInputCucian();
+        pilihinput.role = this.role;
+        pilihinput.setVisible(true);
+        dispose();
     }//GEN-LAST:event_Bt_CancelActionPerformed
-
-    private void Mn_DashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mn_DashboardActionPerformed
-        // TODO add your handling code here:
-        new MainMenu().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Mn_DashboardActionPerformed
-
-    private void Mn_TransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mn_TransaksiActionPerformed
-        // TODO add your handling code here:
-        new TransaksiHarian().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Mn_TransaksiActionPerformed
-
-    private void Mn_LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mn_LogoutActionPerformed
-        // TODO add your handling code here:
-        new Login().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Mn_LogoutActionPerformed
-
-    private void Mn_LogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Mn_LogoutMouseClicked
-        // TODO add your handling code here:
-        new Login().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Mn_LogoutMouseClicked
-
-    private void Mn_TransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Mn_TransaksiMouseClicked
-        // TODO add your handling code here:
-        new TransaksiHarian().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Mn_TransaksiMouseClicked
-
-    private void Mn_DashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Mn_DashboardMouseClicked
-        // TODO add your handling code here:
-        new MainMenu().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_Mn_DashboardMouseClicked
 
     /**
      * @param args the command line arguments
@@ -391,9 +313,6 @@ public class InputCucianKilo extends javax.swing.JFrame {
     private javax.swing.JLabel Lb_Jenis;
     public static javax.swing.JLabel Lb_Nama;
     public static javax.swing.JLabel Lb_Telp;
-    private javax.swing.JMenu Mn_Dashboard;
-    private javax.swing.JMenu Mn_Logout;
-    private javax.swing.JMenu Mn_Transaksi;
     private javax.swing.JSpinner Sp_Jumlah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -404,7 +323,6 @@ public class InputCucianKilo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

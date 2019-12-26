@@ -10,7 +10,8 @@ package laundry;
  * @author wulfric
  */
 public class PilihInputCucian extends javax.swing.JFrame {
-
+    public static int role = 0;
+    
     /**
      * Creates new form InputCucianAwal
      */
@@ -158,13 +159,22 @@ public class PilihInputCucian extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jm_utamaMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jm_utamaMenuSelected
-        new MainMenu().setVisible(true);
+        MainMenu menu = new MainMenu();
+        if(this.role == 1) {
+            menu.role = 1;
+            menu.bt_harian.setVisible(true);
+            menu.bt_bulanan.setVisible(true);
+        }
+        menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_jm_utamaMenuSelected
 
     private void bt_kiloanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_kiloanActionPerformed
 
-        new InputCucianKilo().setVisible(true);
+        InputCucianKilo kiloan = new InputCucianKilo();
+        kiloan.role = this.role;
+        kiloan.setVisible(true);
+        
         //ngambil data dari class ini buat di lempar ke class selanjutnya
         String nama = Tf_Nama.getText();
         String telp = Tf_Telp.getText();
@@ -180,7 +190,9 @@ public class PilihInputCucian extends javax.swing.JFrame {
 
     private void bt_satuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_satuanActionPerformed
         
-        new InputCucianKhusus().setVisible(true);
+        InputCucianKhusus khusus = new InputCucianKhusus();
+        khusus.role = this.role;
+        khusus.setVisible(true);
         
         //ngambil data dari class ini buat di lempar ke class selanjutnya
         String nama = Tf_Nama.getText();
