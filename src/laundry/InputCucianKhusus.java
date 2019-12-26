@@ -254,9 +254,19 @@ public class InputCucianKhusus extends javax.swing.JFrame {
             java.sql.Connection conn=(Connection)Connect.configDB();
             java.sql.PreparedStatement pst=conn.prepareStatement(sql);
             pst.execute();
-            JOptionPane.showMessageDialog(null, "data berhasil di tambahkan");
+            
+            //option pane
+            String[] options = {"Main Menu", "Input Cucian"};
+           int x = JOptionPane.showOptionDialog(null, "Data berhasil di tambahkan\n\nSilakan pilih task selanjutnya\n", "Input Cucian", JOptionPane.DEFAULT_OPTION , JOptionPane.INFORMATION_MESSAGE , null, options, options[0]);
+            
+            if (x == 1){
             new PilihInputCucian().setVisible(true);
             dispose();
+            } else if (x == 0){
+            new MainMenu().setVisible(true);
+            dispose();
+            }
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Penambahan Data Gagal "+e.getMessage());
         }
