@@ -6,6 +6,7 @@
 package laundry;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.util.Date;
 //import java.util.Calendar;
 import java.text.SimpleDateFormat;
@@ -254,27 +255,34 @@ public class InputCucianKhusus extends javax.swing.JFrame {
             java.sql.PreparedStatement pst=conn.prepareStatement(sql);
             pst.execute();
             JOptionPane.showMessageDialog(null, "data berhasil di tambahkan");
+            new PilihInputCucian().setVisible(true);
+            dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Penambahan Data Gagal"+e.getMessage());
+            JOptionPane.showMessageDialog(null, "Penambahan Data Gagal "+e.getMessage());
         }
     }//GEN-LAST:event_Bt_SubmitActionPerformed
 
     private void Sp_JumlahStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Sp_JumlahStateChanged
         
         String jenis = (String) Cb_Jenis.getSelectedItem();
-        int harga;
         
-        if(jenis == "Jaket"){
-            harga = 12000;
-        } else if (jenis == "Jas"){
-            harga = 10000;
-        } else if (jenis == "Boneka"){
-            harga = 10000;
-        } else {
-            harga = 25000;
+        
+        try {
+            int harga;
+            String sql = "select price from wash_price WHERE name ='" + jenis + "'";
+            java.sql.Connection conn = (Connection) Connect.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet rs = stm.executeQuery(sql);
+            while(rs.next()){
+                harga = rs.getInt(1);
+                Lb_Harga.setText(Integer.toString((Integer)Sp_Jumlah.getValue() * harga));
+            }
+   
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada koneksi "+e.getMessage());
         }
         
-        Lb_Harga.setText(Integer.toString((Integer)Sp_Jumlah.getValue() * harga));
+        
     }//GEN-LAST:event_Sp_JumlahStateChanged
 
     private void Cb_JenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cb_JenisActionPerformed

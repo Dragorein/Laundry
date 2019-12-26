@@ -250,16 +250,31 @@ public class InputCucianKilo extends javax.swing.JFrame {
             java.sql.PreparedStatement pst=conn.prepareStatement(sql);
             pst.execute();
             JOptionPane.showMessageDialog(null, "data berhasil di tambahkan");
+            new PilihInputCucian().setVisible(true);
+            dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Penambahan Data Gagal  "+e.getMessage());
+            JOptionPane.showMessageDialog(null, "Penambahan Data Gagal "+e.getMessage());
         }
+        
+        
     }//GEN-LAST:event_Bt_SubmitActionPerformed
 
     private void Sp_JumlahStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Sp_JumlahStateChanged
         // TODO add your handling code here:
-        int harga = 5000;
-        
-        Lb_Harga.setText(Integer.toString((Integer)Sp_Jumlah.getValue() * harga));
+         try {
+            int harga;
+            String sql = "select price from wash_price WHERE name ='" + Lb_Jenis.getText() + "'";
+            java.sql.Connection conn = (Connection) Connect.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet rs = stm.executeQuery(sql);
+            while(rs.next()){
+                harga = rs.getInt(1);
+                Lb_Harga.setText(Integer.toString((Integer)Sp_Jumlah.getValue() * harga));
+            }
+   
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada koneksi "+e.getMessage());
+        }
     }//GEN-LAST:event_Sp_JumlahStateChanged
 
     private void Bt_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bt_CancelActionPerformed
