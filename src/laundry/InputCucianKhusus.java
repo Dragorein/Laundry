@@ -6,7 +6,7 @@
 package laundry;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
+//import java.sql.ResultSet;
 import java.util.Date;
 //import java.util.Calendar;
 import java.text.SimpleDateFormat;
@@ -15,6 +15,11 @@ import java.sql.Timestamp;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 import java.util.UUID;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 /**
  *
@@ -39,6 +44,7 @@ public class InputCucianKhusus extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
@@ -59,20 +65,25 @@ public class InputCucianKhusus extends javax.swing.JFrame {
         Lb_Alamat = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(920, 420));
 
-        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 0, 24)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(2, 122, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(940, 420));
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel1.setText("Input Cucian (Satuan)");
 
-        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel4.setText("Jenis Cucian");
 
-        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel5.setText("Jumlah");
 
-        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel6.setText("Harga");
 
-        Bt_Submit.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        Bt_Submit.setBackground(new java.awt.Color(2, 242, 255));
+        Bt_Submit.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         Bt_Submit.setText("Submit");
         Bt_Submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +91,8 @@ public class InputCucianKhusus extends javax.swing.JFrame {
             }
         });
 
-        Bt_Cancel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        Bt_Cancel.setBackground(new java.awt.Color(2, 242, 255));
+        Bt_Cancel.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         Bt_Cancel.setText("Cancel");
         Bt_Cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,7 +100,8 @@ public class InputCucianKhusus extends javax.swing.JFrame {
             }
         });
 
-        Cb_Jenis.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Cb_Jenis.setBackground(new java.awt.Color(2, 242, 255));
+        Cb_Jenis.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         Cb_Jenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jas", "Jaket", "Boneka", "Karpet" }));
         Cb_Jenis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,118 +109,141 @@ public class InputCucianKhusus extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel7.setText("Rp");
 
-        Lb_Harga.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Lb_Harga.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         Lb_Harga.setText("0");
 
-        Sp_Jumlah.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Sp_Jumlah.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         Sp_Jumlah.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 Sp_JumlahStateChanged(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel2.setText("Nama");
 
-        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel3.setText("No. Telp");
 
-        jLabel8.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel8.setText("Alamat");
 
-        Lb_Telp.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        Lb_Telp.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         Lb_Telp.setText("telp");
 
-        Lb_Nama.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        Lb_Nama.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         Lb_Nama.setText("nama");
 
-        Lb_Alamat.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        Lb_Alamat.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         Lb_Alamat.setText("alamat");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(219, 219, 219)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Bt_Submit)
+                        .addGap(51, 51, 51)
+                        .addComponent(Bt_Cancel))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(Lb_Telp, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel2))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(79, 79, 79)
+                                    .addComponent(Lb_Alamat, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(Lb_Nama, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Lb_Harga, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Sp_Jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Cb_Jenis, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 29, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(Lb_Nama))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(Lb_Telp))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Lb_Alamat)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(Cb_Jenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(Sp_Jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(Lb_Harga))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Bt_Submit)
+                    .addComponent(Bt_Cancel))
+                .addGap(71, 71, 71))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(46, 46, 46)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(374, Short.MAX_VALUE)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel8))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Sp_Jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(Lb_Harga, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(Lb_Telp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Lb_Nama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Lb_Alamat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Bt_Submit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Bt_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(Cb_Jenis, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(179, 179, 179))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(Lb_Nama))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(Lb_Telp))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(0, 87, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Lb_Alamat, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(Cb_Jenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(Sp_Jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(Lb_Harga)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Bt_Submit)
-                        .addGap(18, 18, 18)
-                        .addComponent(Bt_Cancel)))
-                .addGap(30, 30, 30))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -238,18 +274,88 @@ public class InputCucianKhusus extends javax.swing.JFrame {
         //Unique random
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         
-        SimpleDateFormat uq = new SimpleDateFormat("yyyMMdd");
+        SimpleDateFormat uq = new SimpleDateFormat("yy-yyMMdd");
         String A = uq.format(timestamp);
+        String time = A;
+        String[] zone = time.split("-");
+        String part1 = zone[1];
         UUID uid = UUID.randomUUID();
-        String B = String.valueOf(uid);
-        String string = B;
+        String C = String.valueOf(uid);
+        String string = C;
         String[] parts = string.split("-");
-        String part1 = parts[1];
+        String part2 = parts[1];
         
-        String unique = A + part1;
+        String unique = part1 + part2;
         
+        //buat pdf
+        SimpleDateFormat dy = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        Timestamp dayandtime = new Timestamp(System.currentTimeMillis());
         
         try {
+            // Cetak PDF
+            PDDocument data2 = new PDDocument();
+            
+            PDPage page = new PDPage();
+            data2.addPage(page);
+            String message = "                                        ~Eka Laundry~ ";
+            String message1 ="                              Jl Taman Yasmin No 2 Bekasi";
+            String message2 ="                                    " +dy.format(dayandtime);
+            String message3 ="--------------------------------------------------------------------------------------";
+            String message4 ="No.Cucian        : " +unique;
+            String message5 ="Nama               : " +Lb_Nama.getText();
+            String message6 ="No.Telp            : " +Lb_Telp.getText();
+            String message7 ="Alamat             : " +Lb_Alamat.getText();
+            String message8 ="Jenis Cucian    : " + Cb_Jenis.getSelectedItem();
+            String message9 ="Jumlah Item     : " + Sp_Jumlah.getValue();
+            String message10 ="Total Harga                                                                = Rp." + Lb_Harga.getText();
+            PDFont font = PDType1Font.HELVETICA;
+ 
+            PDPageContentStream contents = new PDPageContentStream(data2, page);
+            contents.beginText();
+            contents.setFont(font, 18);
+            contents.setLeading(14.5f);
+            contents.newLineAtOffset(25, 725);
+            contents.showText(message);
+            contents.newLine();
+            contents.showText(message1);
+            contents.newLine();
+            contents.newLine();
+            contents.showText(message2);
+            contents.newLine();
+            contents.showText(message3);
+            contents.newLine();
+            contents.showText(message3);
+            contents.newLine();
+            contents.newLine();
+            contents.showText(message4);
+            contents.newLine();
+            contents.newLine();
+            contents.showText(message5);
+            contents.newLine();
+            contents.newLine();
+            contents.showText(message6);
+            contents.newLine();
+            contents.newLine();
+            contents.showText(message7);
+            contents.newLine();
+            contents.newLine();
+            contents.showText(message8);
+            contents.newLine();
+            contents.newLine();
+            contents.showText(message9);
+            contents.newLine();
+            contents.newLine();
+            contents.showText(message3);
+            contents.newLine();
+            contents.newLine();
+            contents.showText(message10);
+            contents.endText();
+            contents.close();
+            
+            data2.save("D:/GitHub_Repos/laundry/Struk_PDF/Struk" +unique+ ".pdf");
+            data2.close();
+
+            //insert data ke database
             String sql = "INSERT INTO wash_list(wash_key,wash_cust_name, wash_cust_phone, wash_cust_address, wash_type, wash_qty, wash_price, wash_status, wash_date_in, wash_date_out) values('"+ unique +"','" + Lb_Nama.getText() + "','" + Lb_Telp.getText() + "','" + Lb_Alamat.getText() + "','" + Cb_Jenis.getSelectedItem() + "'," + Sp_Jumlah.getValue() + "," + Lb_Harga.getText() + ",'Antri','" + current +"','" + finish +"');";
             java.sql.Connection conn=(Connection)Connect.configDB();
             java.sql.PreparedStatement pst=conn.prepareStatement(sql);
@@ -359,6 +465,7 @@ public class InputCucianKhusus extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
