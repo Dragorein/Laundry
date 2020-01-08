@@ -6,13 +6,21 @@
 package laundry;
 
 import java.sql.Connection;
+import java.util.Date;
+//import java.util.Calendar;
+import java.text.SimpleDateFormat;
+//import java.text.DateFormat;
+import java.sql.Timestamp;
 import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
+import java.util.UUID;
 
 /**
  *
  * @author wulfric
  */
 public class InputCucianKilo extends javax.swing.JFrame {
+    public static int role = 0;
 
     /**
      * Creates new form InputCucianKilo
@@ -37,97 +45,85 @@ public class InputCucianKilo extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        bt_cancel = new javax.swing.JButton();
+        Bt_Submit = new javax.swing.JButton();
+        Bt_Cancel = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         Lb_Jenis = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        jLabel8 = new javax.swing.JLabel();
+        Lb_Harga = new javax.swing.JLabel();
+        SpinnerNumberModel model = new SpinnerNumberModel(0,0,100,1);
+        Sp_Jumlah = new javax.swing.JSpinner(model);
+        Lb_Alamat = new javax.swing.JLabel();
+        Lb_Nama = new javax.swing.JLabel();
+        Lb_Telp = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         jLabel1.setText("Input Cucian (Kilo)");
 
-        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         jLabel2.setText("Nama");
 
-        jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         jLabel3.setText("No. Telp");
 
-        jLabel4.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         jLabel4.setText("Jenis Cucian");
 
-        jLabel5.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         jLabel5.setText("Jumlah");
 
-        jLabel6.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         jLabel6.setText("Harga");
 
-        Tf_Nama.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        Tf_Nama.setText("sel");
-        Tf_Nama.addActionListener(new java.awt.event.ActionListener() {
+        Bt_Submit.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        Bt_Submit.setText("Submit");
+        Bt_Submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Tf_NamaActionPerformed(evt);
+                Bt_SubmitActionPerformed(evt);
             }
         });
 
-        Tf_Telp.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        Tf_Telp.setText("089684679597");
-
-        Tf_Jumlah.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        Tf_Jumlah.setText("2");
-
-        Tf_Harga.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        Tf_Harga.setText("20000");
-        Tf_Harga.addActionListener(new java.awt.event.ActionListener() {
+        Bt_Cancel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        Bt_Cancel.setText("Cancel");
+        Bt_Cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Tf_HargaActionPerformed(evt);
+                Bt_CancelActionPerformed(evt);
             }
         });
 
-        B_Submit.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        B_Submit.setText("Submit");
-        B_Submit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_SubmitActionPerformed(evt);
-            }
-        });
-
-        bt_cancel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        bt_cancel.setText("Cancel");
-        bt_cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_cancelActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         jLabel7.setText("Kg");
 
-        Lb_Jenis.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        Lb_Jenis.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Lb_Jenis.setText("Kiloan");
 
-        jLabel9.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         jLabel9.setText("Rp");
 
-        jMenu1.setText("Dashboard");
-        jMenuBar1.add(jMenu1);
+        jLabel8.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel8.setText("Alamat");
 
-        jMenu2.setText("Transaksi");
-        jMenuBar1.add(jMenu2);
+        Lb_Harga.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Lb_Harga.setText("0");
 
-        jMenu3.setText("Logout");
-        jMenuBar1.add(jMenu3);
+        Sp_Jumlah.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Sp_Jumlah.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                Sp_JumlahStateChanged(evt);
+            }
+        });
 
-        setJMenuBar(jMenuBar1);
+        Lb_Alamat.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        Lb_Alamat.setText("alamat");
+
+        Lb_Nama.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        Lb_Nama.setText("nama");
+
+        Lb_Telp.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        Lb_Telp.setText("telp");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,41 +131,43 @@ public class InputCucianKilo extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(208, 208, 208)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addGap(37, 37, 37)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel8))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(Tf_Jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel7))
+                                .addComponent(Sp_Jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel9)
-                                .addGap(18, 18, 18)
-                                .addComponent(Tf_Harga, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Lb_Harga, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 18, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bt_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Bt_Submit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Bt_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(Tf_Telp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
-                                .addComponent(Tf_Nama, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(Lb_Jenis))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(57, 57, 57))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(208, 208, 208)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Lb_Jenis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Lb_Alamat, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                            .addComponent(Lb_Telp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Lb_Nama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,60 +176,124 @@ public class InputCucianKilo extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(Tf_Nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Lb_Nama))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(Tf_Telp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Lb_Telp))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(Lb_Alamat, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(Lb_Jenis))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(Tf_Jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(B_Submit)
-                    .addComponent(jLabel7))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(Bt_Submit))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Sp_Jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_cancel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Bt_Cancel)
+                    .addComponent(jLabel9)
+                    .addComponent(Lb_Harga))
+                .addGap(30, 30, 30))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Tf_NamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tf_NamaActionPerformed
+    private void Bt_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bt_SubmitActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Tf_NamaActionPerformed
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-    private void Tf_HargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tf_HargaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Tf_HargaActionPerformed
-
-    private void B_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_SubmitActionPerformed
-        // TODO add your handling code here:
-        try {
-            String sql = "INSERT INTO wash_list(wash_cust_name, wash_type, wash_qty, wash_price, wash_status) values('"+Tf_Nama.getText()+"','"+Lb_Jenis.getText()+"',"+Tf_Jumlah.getText()+","+Tf_Harga.getText()+",'Antri');";
+        Date currentDate = new Date();
+        String current = sdf.format(currentDate);
+        
+        SimpleDateFormat ed = new SimpleDateFormat("yyyy-MM");
+        SimpleDateFormat f = new SimpleDateFormat("dd");
+        Date finishDate = new Date();
+        String finishMY = ed.format(finishDate);
+        String finishD = f.format(finishDate);
+        
+        int finishNew = Integer.parseInt(finishD) + 3;
+        
+        String finishNewD = String.valueOf(finishNew);
+        
+        String finish = finishMY+"-"+finishNewD;
+        
+        //Unique random
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        
+        SimpleDateFormat uq = new SimpleDateFormat("yyyMMdd");
+        String A = uq.format(timestamp);
+        UUID uid = UUID.randomUUID();
+        String B = String.valueOf(uid);
+        String string = B;
+        String[] parts = string.split("-");
+        String part1 = parts[1];
+        
+        String unique = A + part1;
+        
+        try {    
+            String sql = "INSERT INTO wash_list(wash_key, wash_cust_name, wash_cust_phone, wash_cust_address, wash_type, wash_qty, wash_price, wash_status, wash_date_in, wash_date_out) values('" + unique + "','" + Lb_Nama.getText() + "','" + Lb_Telp.getText() + "','" + Lb_Alamat.getText() + "','" + Lb_Jenis.getText() + "'," + Sp_Jumlah.getValue() + "," + Lb_Harga.getText() + ",'Antri','" + current +"','" + finish +"');";
             java.sql.Connection conn=(Connection)Connect.configDB();
             java.sql.PreparedStatement pst=conn.prepareStatement(sql);
             pst.execute();
-            JOptionPane.showMessageDialog(null, "data berhasil di tambahkan");
+            
+            //option pane
+            String[] options = {"Main Menu", "Input Cucian"};
+           int x = JOptionPane.showOptionDialog(null, "Data berhasil di tambahkan\n\nSilakan pilih task selanjutnya\n", "Input Cucian", JOptionPane.DEFAULT_OPTION , JOptionPane.INFORMATION_MESSAGE , null, options, options[0]);
+            
+            if (x == 1){
+            new PilihInputCucian().setVisible(true);
+            dispose();
+            } else if (x == 0){
+            new MainMenu().setVisible(true);
+            dispose();
+            }
+            
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Penambahan Data Gagal"+e.getMessage());
+            JOptionPane.showMessageDialog(null, "Penambahan Data Gagal "+e.getMessage());
         }
-    }//GEN-LAST:event_B_SubmitActionPerformed
+        
+        
+    }//GEN-LAST:event_Bt_SubmitActionPerformed
 
-    private void bt_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelActionPerformed
-        new PilihInputCucian().setVisible(true);
+    private void Sp_JumlahStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Sp_JumlahStateChanged
+        // TODO add your handling code here:
+         try {
+            int harga;
+            String sql = "select price from wash_price WHERE name ='" + Lb_Jenis.getText() + "'";
+            java.sql.Connection conn = (Connection) Connect.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet rs = stm.executeQuery(sql);
+            while(rs.next()){
+                harga = rs.getInt(1);
+                Lb_Harga.setText(Integer.toString((Integer)Sp_Jumlah.getValue() * harga));
+            }
+   
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada koneksi "+e.getMessage());
+        }
+    }//GEN-LAST:event_Sp_JumlahStateChanged
+
+    private void Bt_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bt_CancelActionPerformed
+        // TODO add your handling code here:
+        PilihInputCucian pilihinput = new PilihInputCucian();
+        pilihinput.role = this.role;
+        pilihinput.setVisible(true);
         dispose();
-    }//GEN-LAST:event_bt_cancelActionPerformed
+    }//GEN-LAST:event_Bt_CancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,8 +331,14 @@ public class InputCucianKilo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bt_cancel;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Bt_Cancel;
+    private javax.swing.JButton Bt_Submit;
+    public static javax.swing.JLabel Lb_Alamat;
+    private javax.swing.JLabel Lb_Harga;
+    private javax.swing.JLabel Lb_Jenis;
+    public static javax.swing.JLabel Lb_Nama;
+    public static javax.swing.JLabel Lb_Telp;
+    private javax.swing.JSpinner Sp_Jumlah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -278,11 +346,8 @@ public class InputCucianKilo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

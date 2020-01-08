@@ -5,8 +5,6 @@
  */
 package laundry;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,19 +13,13 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
-    Connection con;
-    Statement stat;
-    ResultSet rs;
-    String sql;
+   
     /**
      * Creates new form Menu
      */
     public Login() {
         initComponents();
-        Connect DB = new Connect();
-        DB.config();
-        con = DB.con;
-        stat = DB.stm;
+       
     }
 
     /**
@@ -117,11 +109,19 @@ public class Login extends javax.swing.JFrame {
         try {
             String emp_num = tf_empnum.getText();
             String emp_pass = pf_pass.getText();
-            sql = "SELECT * FROM employee WHERE emp_num='"+emp_num+"'";
-            rs = stat.executeQuery(sql);
+            String sql = "SELECT * FROM employee WHERE emp_num='"+emp_num+"'";
+            java.sql.Connection conn = (Connection) Connect.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet rs = stm.executeQuery(sql);
             if(rs.next()){
                 if(emp_num.equals(rs.getString("emp_num")) && emp_pass.equals(rs.getString("emp_password"))) {
-                    new MainMenu().setVisible(true);
+                    MainMenu menu = new MainMenu();
+                    if(Integer.parseInt(rs.getString("emp_role")) == 1) {
+                        menu.role = 1;
+                        menu.bt_harian.setVisible(true);
+                        menu.bt_bulanan.setVisible(true);
+                    }
+                    menu.setVisible(true);
                     dispose();
                 }else{
                     JOptionPane.showMessageDialog(null, "username atau password salah");

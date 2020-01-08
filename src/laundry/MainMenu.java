@@ -5,13 +5,17 @@
  */
 package laundry;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Franz
  */
 public class MainMenu extends javax.swing.JFrame {
+    public static int role = 0;
 
     /**
+     * 
      * Creates new form MainMenu2
      */
     public MainMenu() {
@@ -51,6 +55,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        bt_harian.setVisible(false);
         bt_harian.setText("Transaksi Harian");
         bt_harian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,6 +63,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        bt_bulanan.setVisible(false);
         bt_bulanan.setText("Laporan Bulanan");
         bt_bulanan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,22 +87,22 @@ public class MainMenu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 279, Short.MAX_VALUE)
+                        .addGap(0, 285, Short.MAX_VALUE)
                         .addComponent(lb_title)
-                        .addGap(221, 221, 221)
-                        .addComponent(bt_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(200, 200, 200)
+                        .addComponent(bt_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(bt_input, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bt_harian, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
+                            .addComponent(bt_input, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                            .addComponent(bt_harian, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(bt_daftar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bt_bulanan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
+                            .addComponent(bt_bulanan, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE))))
+                .addGap(35, 35, 35))
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
@@ -119,11 +125,13 @@ public class MainMenu extends javax.swing.JFrame {
                 .addContainerGap(60, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(720, 511));
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_inputActionPerformed
-        new PilihInputCucian().setVisible(true);
+        PilihInputCucian pilihinput = new PilihInputCucian();
+        pilihinput.role = this.role;
+        pilihinput.setVisible(true);
         dispose();
     }//GEN-LAST:event_bt_inputActionPerformed
 
@@ -133,17 +141,23 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_logoutActionPerformed
 
     private void bt_harianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_harianActionPerformed
-        new TransaksiHarian().setVisible(true);
+        TransaksiHarian harian = new TransaksiHarian();
+        harian.role = this.role;
+        harian.setVisible(true);
         dispose();
     }//GEN-LAST:event_bt_harianActionPerformed
 
     private void bt_daftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_daftarActionPerformed
-        new DaftarCucian().setVisible(true);
+        DaftarCucian daftar = new DaftarCucian();
+        daftar.role = this.role;
+        daftar.setVisible(true);
         dispose();
     }//GEN-LAST:event_bt_daftarActionPerformed
 
     private void bt_bulananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_bulananActionPerformed
-        new LaporanBulanan().setVisible(true);
+        LaporanBulanan bulanan = new LaporanBulanan();
+        bulanan.role = this.role;
+        bulanan.setVisible(true);
         dispose();
     }//GEN-LAST:event_bt_bulananActionPerformed
 
@@ -184,9 +198,9 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bt_bulanan;
+    public static javax.swing.JButton bt_bulanan;
     private javax.swing.JButton bt_daftar;
-    private javax.swing.JButton bt_harian;
+    public static javax.swing.JButton bt_harian;
     private javax.swing.JButton bt_input;
     private javax.swing.JButton bt_logout;
     private javax.swing.JSeparator jSeparator1;

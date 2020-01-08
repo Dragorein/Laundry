@@ -6,13 +6,22 @@
 package laundry;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.util.Date;
+//import java.util.Calendar;
+import java.text.SimpleDateFormat;
+//import java.text.DateFormat;
+import java.sql.Timestamp;
 import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
+import java.util.UUID;
 
 /**
  *
  * @author wulfric
  */
 public class InputCucianKhusus extends javax.swing.JFrame {
+    public static int role = 0;
 
     /**
      * Creates new form InputCucianKhusus
@@ -32,81 +41,91 @@ public class InputCucianKhusus extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        Tf_Nama = new javax.swing.JTextField();
-        Tf_Telp = new javax.swing.JTextField();
-        Tf_Jumlah = new javax.swing.JTextField();
-        Tf_Harga = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        bt_cancel = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        Bt_Submit = new javax.swing.JButton();
+        Bt_Cancel = new javax.swing.JButton();
+        Cb_Jenis = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        Lb_Harga = new javax.swing.JLabel();
+        SpinnerNumberModel model = new SpinnerNumberModel(0,0,100,1);
+        Sp_Jumlah = new javax.swing.JSpinner(model);
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        Lb_Telp = new javax.swing.JLabel();
+        Lb_Nama = new javax.swing.JLabel();
+        Lb_Alamat = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 0, 24)); // NOI18N
         jLabel1.setText("Input Cucian (Satuan)");
 
-        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel2.setText("Nama");
-
-        jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel3.setText("No. Telp");
-
-        jLabel4.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         jLabel4.setText("Jenis Cucian");
 
-        jLabel5.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         jLabel5.setText("Jumlah");
 
-        jLabel6.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         jLabel6.setText("Harga");
 
-        Tf_Nama.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        Tf_Nama.setText("sel");
-        Tf_Nama.addActionListener(new java.awt.event.ActionListener() {
+        Bt_Submit.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        Bt_Submit.setText("Submit");
+        Bt_Submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Tf_NamaActionPerformed(evt);
+                Bt_SubmitActionPerformed(evt);
             }
         });
 
-        Tf_Telp.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        Tf_Telp.setText("089684679597");
-
-        Tf_Jumlah.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        Tf_Jumlah.setText("2");
-
-        Tf_Harga.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        Tf_Harga.setText("20000");
-
-        jButton1.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jButton1.setText("Submit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Bt_Cancel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        Bt_Cancel.setText("Cancel");
+        Bt_Cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                Bt_CancelActionPerformed(evt);
             }
         });
 
-        bt_cancel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        bt_cancel.setText("Cancel");
-        bt_cancel.addActionListener(new java.awt.event.ActionListener() {
+        Cb_Jenis.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Cb_Jenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jas", "Jaket", "Boneka", "Karpet" }));
+        Cb_Jenis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_cancelActionPerformed(evt);
+                Cb_JenisActionPerformed(evt);
             }
         });
 
-        jMenu1.setText("Menu");
-        jMenuBar1.add(jMenu1);
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setText("Rp");
 
-        jMenu3.setText("Logout");
-        jMenuBar1.add(jMenu3);
+        Lb_Harga.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Lb_Harga.setText("0");
 
-        setJMenuBar(jMenuBar1);
+        Sp_Jumlah.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Sp_Jumlah.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                Sp_JumlahStateChanged(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel2.setText("Nama");
+
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel3.setText("No. Telp");
+
+        jLabel8.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel8.setText("Alamat");
+
+        Lb_Telp.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        Lb_Telp.setText("telp");
+
+        Lb_Nama.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        Lb_Nama.setText("nama");
+
+        Lb_Alamat.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        Lb_Alamat.setText("alamat");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,92 +133,179 @@ public class InputCucianKhusus extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addGap(37, 37, 37)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel8))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton3)
-                            .addComponent(jRadioButton1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton2)
-                            .addComponent(jRadioButton4))
-                        .addGap(0, 70, Short.MAX_VALUE))
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField1))
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bt_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(194, 194, 194)
+                            .addComponent(Sp_Jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Lb_Harga, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(Lb_Telp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Lb_Nama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Lb_Alamat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Bt_Submit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Bt_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(Cb_Jenis, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(35, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(179, 179, 179))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel1)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(Tf_Nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(Tf_Telp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(Cb_Jenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(Tf_Jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_cancel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(Lb_Nama))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(Lb_Telp))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(0, 87, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Lb_Alamat, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(Cb_Jenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(Sp_Jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(Lb_Harga)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Bt_Submit)
+                        .addGap(18, 18, 18)
+                        .addComponent(Bt_Cancel)))
+                .addGap(30, 30, 30))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Tf_NamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tf_NamaActionPerformed
+    private void Bt_SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bt_SubmitActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Tf_NamaActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
+        //tanggal
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        
+        Date currentDate = new Date();
+        String current = sdf.format(currentDate);
+        
+        //menambahan estimasi
+        SimpleDateFormat ed = new SimpleDateFormat("yyyy-MM");
+        SimpleDateFormat f = new SimpleDateFormat("dd");
+        Date finishDate = new Date();
+        String finishMY = ed.format(finishDate);
+        String finishD = f.format(finishDate);
+        
+        int finishNew = Integer.parseInt(finishD) + 3;
+        
+        String finishNewD = String.valueOf(finishNew);
+        
+        String finish = finishMY+"-"+finishNewD;
+        
+        //Unique random
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        
+        SimpleDateFormat uq = new SimpleDateFormat("yyyMMdd");
+        String A = uq.format(timestamp);
+        UUID uid = UUID.randomUUID();
+        String B = String.valueOf(uid);
+        String string = B;
+        String[] parts = string.split("-");
+        String part1 = parts[1];
+        
+        String unique = A + part1;
+        
+        
         try {
-            String sql = "INSERT INTO wash_list (wash_cust_name, wash_type, wash_qty, wash_price, wash_status) values('"+this.Tf_Nama.getName()+"','"+this.Cb_Jenis.getSelectedItem()+"',"+this.Tf_Jumlah.getText()+","+this.Tf_Harga.getText()+",'Antri');";
+            String sql = "INSERT INTO wash_list(wash_key,wash_cust_name, wash_cust_phone, wash_cust_address, wash_type, wash_qty, wash_price, wash_status, wash_date_in, wash_date_out) values('"+ unique +"','" + Lb_Nama.getText() + "','" + Lb_Telp.getText() + "','" + Lb_Alamat.getText() + "','" + Cb_Jenis.getSelectedItem() + "'," + Sp_Jumlah.getValue() + "," + Lb_Harga.getText() + ",'Antri','" + current +"','" + finish +"');";
             java.sql.Connection conn=(Connection)Connect.configDB();
             java.sql.PreparedStatement pst=conn.prepareStatement(sql);
             pst.execute();
-            JOptionPane.showMessageDialog(null, "data berhasil di tambahkan");
+            
+            //option pane
+            String[] options = {"Main Menu", "Input Cucian"};
+           int x = JOptionPane.showOptionDialog(null, "Data berhasil di tambahkan\n\nSilakan pilih task selanjutnya\n", "Input Cucian", JOptionPane.DEFAULT_OPTION , JOptionPane.INFORMATION_MESSAGE , null, options, options[0]);
+            
+            if (x == 1){
+            new PilihInputCucian().setVisible(true);
+            dispose();
+            } else if (x == 0){
+            new MainMenu().setVisible(true);
+            dispose();
+            }
+            
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Penambahan Data Gagal"+e.getMessage());
+            JOptionPane.showMessageDialog(null, "Penambahan Data Gagal "+e.getMessage());
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_Bt_SubmitActionPerformed
 
-    private void bt_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelActionPerformed
-        new PilihInputCucian().setVisible(true);
+    private void Sp_JumlahStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Sp_JumlahStateChanged
+        
+        String jenis = (String) Cb_Jenis.getSelectedItem();
+        
+        
+        try {
+            int harga;
+            String sql = "select price from wash_price WHERE name ='" + jenis + "'";
+            java.sql.Connection conn = (Connection) Connect.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet rs = stm.executeQuery(sql);
+            while(rs.next()){
+                harga = rs.getInt(1);
+                Lb_Harga.setText(Integer.toString((Integer)Sp_Jumlah.getValue() * harga));
+            }
+   
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada koneksi "+e.getMessage());
+        }
+        
+        
+    }//GEN-LAST:event_Sp_JumlahStateChanged
+
+    private void Cb_JenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cb_JenisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Cb_JenisActionPerformed
+
+    private void Bt_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bt_CancelActionPerformed
+        // TODO add your handling code here:
+        PilihInputCucian pilihinput = new PilihInputCucian();
+        pilihinput.role = this.role;
+        pilihinput.setVisible(true);
         dispose();
-    }//GEN-LAST:event_bt_cancelActionPerformed
+    }//GEN-LAST:event_Bt_CancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,8 +343,14 @@ public class InputCucianKhusus extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bt_cancel;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Bt_Cancel;
+    private javax.swing.JButton Bt_Submit;
+    private javax.swing.JComboBox<String> Cb_Jenis;
+    public static javax.swing.JLabel Lb_Alamat;
+    private javax.swing.JLabel Lb_Harga;
+    public static javax.swing.JLabel Lb_Nama;
+    public static javax.swing.JLabel Lb_Telp;
+    private javax.swing.JSpinner Sp_Jumlah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -246,9 +358,7 @@ public class InputCucianKhusus extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
