@@ -212,6 +212,7 @@ public class AmbilCucian extends javax.swing.JFrame {
             aStatus.setText(rs.getString(11));
             
         } catch (Exception e) {
+            
         }
     
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -221,13 +222,13 @@ public class AmbilCucian extends javax.swing.JFrame {
         String w_id = tfWID.getText();
         
          try {
-            String sql ="UPDATE wash_list SET wash_status = 'Selesai' WHERE wash_id = "+w_id+"";
+            String sql ="UPDATE wash_list SET wash_status = 'Selesai' WHERE wash_key = "+w_id+"";
             java.sql.Connection conn=(Connection)Connect.configDB();
             java.sql.PreparedStatement pst=conn.prepareStatement(sql);
             pst.execute();
             JOptionPane.showMessageDialog(null, "Transaksi Selesai , Terima kasih :)");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Transaksi  Gagal"+e.getMessage());
+            JOptionPane.showMessageDialog(null, "Transaksi  Gagal "+e.getMessage());
         } 
     }//GEN-LAST:event_jButton2ActionPerformed
 
