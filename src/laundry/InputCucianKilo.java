@@ -37,12 +37,12 @@ public class InputCucianKilo extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        Tf_Nama = new javax.swing.JTextField();
-        Tf_Telp = new javax.swing.JTextField();
-        Tf_Jumlah = new javax.swing.JTextField();
-        Tf_Harga = new javax.swing.JTextField();
-        B_Submit = new javax.swing.JButton();
-        B_Cancel = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        bt_cancel = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         Lb_Jenis = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -101,8 +101,13 @@ public class InputCucianKilo extends javax.swing.JFrame {
             }
         });
 
-        B_Cancel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        B_Cancel.setText("Cancel");
+        bt_cancel.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        bt_cancel.setText("Cancel");
+        bt_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cancelActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel7.setText("Kg");
@@ -151,8 +156,8 @@ public class InputCucianKilo extends javax.swing.JFrame {
                                 .addComponent(Tf_Harga, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(B_Submit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(B_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bt_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -194,9 +199,8 @@ public class InputCucianKilo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(Tf_Harga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(B_Cancel)
-                    .addComponent(jLabel9))
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_cancel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -223,6 +227,11 @@ public class InputCucianKilo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Penambahan Data Gagal"+e.getMessage());
         }
     }//GEN-LAST:event_B_SubmitActionPerformed
+
+    private void bt_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelActionPerformed
+        new PilihInputCucian().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_bt_cancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -260,13 +269,8 @@ public class InputCucianKilo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton B_Cancel;
-    private javax.swing.JButton B_Submit;
-    private javax.swing.JLabel Lb_Jenis;
-    private javax.swing.JTextField Tf_Harga;
-    private javax.swing.JTextField Tf_Jumlah;
-    private javax.swing.JTextField Tf_Nama;
-    private javax.swing.JTextField Tf_Telp;
+    private javax.swing.JButton bt_cancel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
