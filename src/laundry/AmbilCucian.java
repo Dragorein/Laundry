@@ -196,7 +196,7 @@ public class AmbilCucian extends javax.swing.JFrame {
          
          try {
            
-            String sql = "select * from wash_list WHERE wash_id = '"+w_id+"'";
+            String sql = "select * from wash_list WHERE wash_key = '"+w_id+"'";
             java.sql.Connection conn = (Connection) Connect.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet rs = stm.executeQuery(sql);
