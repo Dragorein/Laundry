@@ -346,7 +346,7 @@ public class InputCucianKilo extends javax.swing.JFrame {
             contents.endText();
             contents.close();
             
-            data2.save("D:/GitHub_Repos/laundry/Struk_PDF/Struk" +unique+ ".pdf");
+            data2.save("D:/Marco Tugas/TugasOOP/laundry/Struk_PDF/Struk" +unique+ ".pdf");
             data2.close();
             
             //Insert data ke dalam database
