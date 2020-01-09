@@ -33,20 +33,22 @@ public class MainMenu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         bt_input = new javax.swing.JButton();
-        bt_daftar = new javax.swing.JButton();
         bt_harian = new javax.swing.JButton();
         bt_bulanan = new javax.swing.JButton();
-        bt_logout = new javax.swing.JButton();
+        bt_ambil = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         lb_title = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        bt_logout = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        bt_daftar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(2, 122, 255));
+        jPanel1.setBackground(new java.awt.Color(215, 249, 255));
+        jPanel1.setMaximumSize(new java.awt.Dimension(800, 430));
 
-        bt_input.setBackground(new java.awt.Color(2, 242, 255));
         bt_input.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        bt_input.setForeground(new java.awt.Color(40, 38, 39));
         bt_input.setText("Input Cucian");
         bt_input.setPreferredSize(new java.awt.Dimension(95, 20));
         bt_input.addActionListener(new java.awt.event.ActionListener() {
@@ -55,19 +57,9 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        bt_daftar.setBackground(new java.awt.Color(2, 242, 255));
-        bt_daftar.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        bt_daftar.setText("Daftar Cucian");
-        bt_daftar.setPreferredSize(new java.awt.Dimension(95, 20));
-        bt_daftar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_daftarActionPerformed(evt);
-            }
-        });
-
         bt_harian.setVisible(false);
-        bt_harian.setBackground(new java.awt.Color(2, 242, 255));
         bt_harian.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        bt_harian.setForeground(new java.awt.Color(40, 38, 39));
         bt_harian.setText("Transaksi Harian");
         bt_harian.setPreferredSize(new java.awt.Dimension(95, 20));
         bt_harian.addActionListener(new java.awt.event.ActionListener() {
@@ -77,8 +69,8 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         bt_bulanan.setVisible(false);
-        bt_bulanan.setBackground(new java.awt.Color(2, 242, 255));
         bt_bulanan.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        bt_bulanan.setForeground(new java.awt.Color(40, 38, 39));
         bt_bulanan.setText("Laporan Bulanan");
         bt_bulanan.setPreferredSize(new java.awt.Dimension(95, 20));
         bt_bulanan.addActionListener(new java.awt.event.ActionListener() {
@@ -87,8 +79,24 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        bt_logout.setBackground(new java.awt.Color(2, 242, 255));
+        bt_ambil.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        bt_ambil.setForeground(new java.awt.Color(40, 38, 39));
+        bt_ambil.setText("Ambil Cucian");
+        bt_ambil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_ambilActionPerformed(evt);
+            }
+        });
+
+        jPanel2.setBackground(new java.awt.Color(175, 203, 255));
+
+        lb_title.setBackground(new java.awt.Color(0, 0, 0));
+        lb_title.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        lb_title.setText("Menu");
+        lb_title.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
         bt_logout.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        bt_logout.setForeground(new java.awt.Color(40, 38, 39));
         bt_logout.setText("Logout");
         bt_logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,16 +104,41 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        lb_title.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        lb_title.setText("Menu");
-        lb_title.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\GitHub_Repos\\laundry\\Resoure Design\\Menu.png")); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(2, 242, 255));
-        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jButton1.setText("Ambil Cucian");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lb_title)
+                .addGap(193, 193, 193)
+                .addComponent(bt_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_title)
+                    .addComponent(bt_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(124, 124, 124))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        bt_daftar.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        bt_daftar.setForeground(new java.awt.Color(40, 38, 39));
+        bt_daftar.setText("Daftar Cucian");
+        bt_daftar.setPreferredSize(new java.awt.Dimension(95, 20));
+        bt_daftar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bt_daftarActionPerformed(evt);
             }
         });
 
@@ -113,70 +146,52 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lb_title)
-                .addGap(173, 173, 173)
-                .addComponent(bt_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(bt_bulanan, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bt_harian, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(bt_bulanan, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77)
-                        .addComponent(bt_harian, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(bt_daftar, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(bt_input, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bt_daftar, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bt_ambil, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(19, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jSeparator1)
-                    .addContainerGap()))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lb_title)
-                    .addComponent(bt_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_daftar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_input, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                    .addComponent(bt_daftar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_ambil, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bt_bulanan, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_harian, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(153, 153, 153))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(77, 77, 77)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(377, Short.MAX_VALUE)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(816, 496));
+        setSize(new java.awt.Dimension(816, 449));
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_inputActionPerformed
@@ -212,13 +227,13 @@ public class MainMenu extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_bt_bulananActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bt_ambilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ambilActionPerformed
         // TODO add your handling code here:
         AmbilCucian cuci = new AmbilCucian();
         cuci.role = this.role;
         cuci.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bt_ambilActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,14 +272,15 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton bt_bulanan;
-    private javax.swing.JButton bt_daftar;
-    public static javax.swing.JButton bt_harian;
-    private javax.swing.JButton bt_input;
+    public javax.swing.JButton bt_ambil;
+    public javax.swing.JButton bt_bulanan;
+    public javax.swing.JButton bt_daftar;
+    public javax.swing.JButton bt_harian;
+    public javax.swing.JButton bt_input;
     private javax.swing.JButton bt_logout;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lb_title;
     // End of variables declaration//GEN-END:variables
 }
