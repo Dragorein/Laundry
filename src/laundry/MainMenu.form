@@ -239,11 +239,6 @@
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\Marco Tugas\TugasOOP\Laundry\Resoure Design\Menu.png"/>
-                </Property>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>

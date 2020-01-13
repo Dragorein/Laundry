@@ -6,11 +6,8 @@
 package laundry;
 
 import java.sql.Connection;
-//import java.sql.ResultSet;
 import java.util.Date;
-//import java.util.Calendar;
 import java.text.SimpleDateFormat;
-//import java.text.DateFormat;
 import java.sql.Timestamp;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
@@ -179,7 +176,7 @@ public class InputCucianKhusus extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel9))
                                     .addComponent(Cb_Jenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 13, Short.MAX_VALUE)))))
+                                .addGap(0, 12, Short.MAX_VALUE)))))
                 .addGap(44, 44, 44))
         );
         jPanel2Layout.setVerticalGroup(
@@ -235,10 +232,10 @@ public class InputCucianKhusus extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jLabel11.setIcon(new javax.swing.ImageIcon("D:\\Marco Tugas\\TugasOOP\\Laundry\\Resoure Design\\Washer.png")); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resoure Design/Washer.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

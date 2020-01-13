@@ -5,8 +5,6 @@
  */
 package laundry;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author Franz
