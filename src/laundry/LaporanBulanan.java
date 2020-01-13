@@ -48,11 +48,11 @@ public class LaporanBulanan extends javax.swing.JFrame {
         B_Search = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jDCdari = new com.toedter.calendar.JDateChooser();
-        jDCsampai = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         Lb_Back = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jDCdari = new com.toedter.calendar.JDateChooser();
+        jDCsampai = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(2, 242, 255));
@@ -125,10 +125,6 @@ public class LaporanBulanan extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(40, 38, 39));
         jLabel9.setText("Sampai");
 
-        jDCdari.setForeground(new java.awt.Color(40, 38, 39));
-
-        jDCsampai.setForeground(new java.awt.Color(40, 38, 39));
-
         jPanel2.setBackground(new java.awt.Color(175, 203, 255));
 
         Lb_Back.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -156,8 +152,6 @@ public class LaporanBulanan extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("D:\\GitHub_Repos\\laundry\\Resoure Design\\Monthly.png")); // NOI18N
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -180,16 +174,16 @@ public class LaporanBulanan extends javax.swing.JFrame {
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(85, 85, 85)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jDCdari, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                                    .addComponent(jDCsampai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDCdari, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(68, 68, 68)
-                                        .addComponent(jLabel9))
+                                        .addComponent(jLabel9)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jDCsampai, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(127, 127, 127)
                                         .addComponent(B_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))))
@@ -198,7 +192,7 @@ public class LaporanBulanan extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addGap(224, 224, 224)
                         .addComponent(jLabel7)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,13 +206,14 @@ public class LaporanBulanan extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(33, 33, 33)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jDCdari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,7 +239,7 @@ public class LaporanBulanan extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
         );
 
         pack();
@@ -276,8 +271,11 @@ public class LaporanBulanan extends javax.swing.JFrame {
         
         try {
             int harga = 0;
-            int jumlah = 0;  
-            String sql = "select * from wash_list WHERE wash_date_out BETWEEN'"+dari+"' AND '"+sampai+"'";
+            int jumlah = 0;
+            String sql = "SELECT * FROM wash_list WHERE wash_date_out BETWEEN '"+dari+"' AND '"+sampai+"' AND wash_status = 'selesai'";
+            //String sql = "select * from wash_list WHERE wash_date_out BETWEEN '"+dari+"' AND '"+sampai+"' AND wash_status = 'selesai'";
+            //String sql = pilih semua dari wash list dimana tanggal cucian keluar antara dari dan sampai dan status cucian = selesai
+            
             java.sql.Connection conn = (Connection) Connect.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet rs = stm.executeQuery(sql);

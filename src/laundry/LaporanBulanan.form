@@ -31,7 +31,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" pref="461" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -69,11 +69,8 @@
                                   <Component id="jLabel4" min="-2" pref="170" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                                   <Component id="jLabel8" min="-2" pref="59" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jDCdari" pref="149" max="32767" attributes="0"/>
-                                      <Component id="jDCsampai" max="32767" attributes="0"/>
-                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jDCdari" min="-2" pref="146" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel5" min="-2" pref="157" max="-2" attributes="0"/>
@@ -81,6 +78,8 @@
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jDCsampai" min="-2" pref="148" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
@@ -97,7 +96,7 @@
                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="205" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -116,13 +115,15 @@
                           <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jScrollPane1" min="-2" pref="200" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="3" max="-2" attributes="0">
-                          <Component id="jLabel1" alignment="3" max="32767" attributes="0"/>
-                          <Component id="jLabel4" alignment="3" max="32767" attributes="0"/>
-                          <Component id="jLabel8" alignment="3" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jScrollPane1" min="-2" pref="200" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" max="-2" attributes="0">
+                              <Component id="jLabel1" alignment="3" max="32767" attributes="0"/>
+                              <Component id="jLabel4" alignment="3" max="32767" attributes="0"/>
+                              <Component id="jLabel8" alignment="3" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <Component id="jDCdari" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -137,8 +138,8 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jDCsampai" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDCsampai" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="B_Search" min="-2" max="-2" attributes="0"/>
@@ -334,20 +335,6 @@
             <Property name="text" type="java.lang.String" value="Sampai"/>
           </Properties>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDCdari">
-          <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="27" green="26" red="28" type="rgb"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDCsampai">
-          <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="27" green="26" red="28" type="rgb"/>
-            </Property>
-          </Properties>
-        </Component>
         <Container class="javax.swing.JPanel" name="jPanel2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -390,11 +377,10 @@
           </SubComponents>
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel3">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\GitHub_Repos\laundry\Resoure Design\Monthly.png"/>
-            </Property>
-          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="jDCdari">
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="jDCsampai">
         </Component>
       </SubComponents>
     </Container>
