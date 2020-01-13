@@ -68,7 +68,6 @@ public class InputCucianKhusus extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(830, 493));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(215, 249, 255));
@@ -180,7 +179,7 @@ public class InputCucianKhusus extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel9))
                                     .addComponent(Cb_Jenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 12, Short.MAX_VALUE)))))
+                                .addGap(0, 13, Short.MAX_VALUE)))))
                 .addGap(44, 44, 44))
         );
         jPanel2Layout.setVerticalGroup(
@@ -195,9 +194,9 @@ public class InputCucianKhusus extends javax.swing.JFrame {
                     .addComponent(Lb_Telp)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Lb_Alamat)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -236,10 +235,10 @@ public class InputCucianKhusus extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        jLabel11.setIcon(new javax.swing.ImageIcon("D:\\GitHub_Repos\\laundry\\Resoure Design\\Washer.png")); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon("D:\\Marco Tugas\\TugasOOP\\Laundry\\Resoure Design\\Washer.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -407,11 +406,19 @@ public class InputCucianKhusus extends javax.swing.JFrame {
            int x = JOptionPane.showOptionDialog(null, "Data berhasil di tambahkan\n\nSilakan pilih task selanjutnya\n", "Input Cucian", JOptionPane.DEFAULT_OPTION , JOptionPane.INFORMATION_MESSAGE , null, options, options[0]);
             
             if (x == 1){
-            new PilihInputCucian().setVisible(true);
-            dispose();
+                PilihInputCucian pilih = new PilihInputCucian();
+                pilih.role = this.role;
+                pilih.setVisible(true);
+                dispose();
             } else if (x == 0){
-            new MainMenu().setVisible(true);
-            dispose();
+                MainMenu menu = new MainMenu();
+                if(this.role == 1) {
+                    menu.role = 1;
+                    menu.bt_harian.setVisible(true);
+                    menu.bt_bulanan.setVisible(true);
+                }
+                menu.setVisible(true);
+                dispose();
             }
             
         } catch (Exception e) {
