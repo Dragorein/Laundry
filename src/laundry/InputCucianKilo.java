@@ -330,7 +330,8 @@ public class InputCucianKilo extends javax.swing.JFrame {
             String message7 ="Alamat             : " +Lb_Alamat.getText();
             String message8 ="Jenis Cucian    : " + Lb_Jenis.getText();
             String message9 ="Jumlah Berat    : " + Sp_Jumlah.getValue()+ " Kg";
-            String message10 ="Total Harga                                                                = Rp." + Lb_Harga.getText();
+            String message10 = "Waktu Pengambilan   : " + finish;
+            String message11 ="Total Harga                                                                = Rp." + Lb_Harga.getText();
             PDFont font = PDType1Font.HELVETICA;
  
             PDPageContentStream contents = new PDPageContentStream(data2, page);
@@ -372,6 +373,9 @@ public class InputCucianKilo extends javax.swing.JFrame {
             contents.newLine();
             contents.newLine();
             contents.showText(message10);
+            contents.newLine();
+            contents.newLine();
+            contents.showText(message11);
             contents.endText();
             contents.close();
             
