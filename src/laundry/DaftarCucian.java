@@ -198,7 +198,7 @@ public class DaftarCucian extends javax.swing.JFrame {
         //menampilkan data database kedalam tabel
         try {
             int no=1;
-            String sql = "select * from wash_list where wash_status != 'selesai'";
+            String sql = "select * from wash_list where wash_status = 'selesai'";
             java.sql.Connection conn = (Connection) Connect.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet rs = stm.executeQuery(sql);
