@@ -59,7 +59,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel11" min="-2" pref="200" max="-2" attributes="0"/>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace pref="22" max="32767" attributes="0"/>
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="228" max="-2" attributes="0"/>
               </Group>
@@ -87,7 +87,7 @@
                       <Component id="Bt_Submit" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Bt_Cancel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="12" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

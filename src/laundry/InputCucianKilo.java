@@ -330,7 +330,8 @@ public class InputCucianKilo extends javax.swing.JFrame {
             String message7 ="Alamat             : " +Lb_Alamat.getText();
             String message8 ="Jenis Cucian    : " + Lb_Jenis.getText();
             String message9 ="Jumlah Berat    : " + Sp_Jumlah.getValue()+ " Kg";
-            String message10 ="Total Harga                                                                = Rp." + Lb_Harga.getText();
+            String message10 = "Waktu Pengambilan   : " + finish;
+            String message11 ="Total Harga                                                                = Rp." + Lb_Harga.getText();
             PDFont font = PDType1Font.HELVETICA;
  
             PDPageContentStream contents = new PDPageContentStream(data2, page);
@@ -372,11 +373,15 @@ public class InputCucianKilo extends javax.swing.JFrame {
             contents.newLine();
             contents.newLine();
             contents.showText(message10);
+            contents.newLine();
+            contents.newLine();
+            contents.showText(message11);
             contents.endText();
             contents.close();
             
             data2.save(filename);
             data2.close();
+
             
             //Insert data ke dalam database
            String sql = "INSERT INTO wash_list(wash_key, wash_cust_name, wash_cust_phone, wash_cust_address, wash_type, wash_qty, wash_price, wash_status, wash_date_in, wash_date_out) values('" + unique + "','" + Lb_Nama.getText() + "','" + Lb_Telp.getText() + "','" + Lb_Alamat.getText() + "','" + Lb_Jenis.getText() + "'," + Sp_Jumlah.getValue() + "," + Lb_Harga.getText() + ",'Antri','" + current +"','" + finish +"');";
